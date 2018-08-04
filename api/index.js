@@ -13,7 +13,10 @@ app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(MONGO_URL);
+mongoose.connect(
+  MONGO_URL,
+  { useNewUrlParser: true },
+);
 
 require('./routes/index.js');
 

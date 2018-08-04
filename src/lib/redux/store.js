@@ -1,11 +1,15 @@
 import { createStore, applyMiddleware } from 'redux';
-import loadingMiddleware from 'redux-loading-middleware';
-import loadingReducer from 'redux-loading-middleware/loadingReducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import loadingMiddleware from 'redux-loading-middleware';
+
+import rootReducer from './reducers';
 
 const store = createStore(
-  loadingReducer,
-  applyMiddleware(loadingMiddleware, thunk),
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(loadingMiddleware, thunk),
+  ),
 );
 
 export default store;
