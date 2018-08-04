@@ -6,7 +6,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({
   dev,
   dir: './src',
-  conf: require('./next.config.js')
+  conf: require('./next.config.js'),
 });
 const handle = app.getRequestHandler();
 

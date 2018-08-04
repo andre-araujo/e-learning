@@ -26,6 +26,7 @@
   },
   "rules": {
     "import/prefer-default-export": 0,
+    "global-require": 0,
     "indent": [
       1,
       2,

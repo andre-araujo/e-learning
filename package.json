@@ -15,10 +15,11 @@
   "scripts": {
     "build": "next build",
     "commit": "git-cz",
-    "dev": "node server.js",
+    "dev": "concurrently \"node client.js\" \"nodemon api/index.js\"",
     "lint:fix": "eslint ./ --fix",
     "lint": "eslint ./",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "api": "node ./api/index.js",
+    "start": "cross-env NODE_ENV=production node client.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
@@ -49,6 +50,7 @@
   "devDependencies": {
     "babel-eslint": "~8.2.6",
     "commitizen": "~2.10.1",
+    "concurrently": "^3.6.1",
     "cross-env": "~5.2.0",
     "cz-conventional-changelog": "~2.1.0",
     "enzyme": "~3.3.0",
@@ -61,6 +63,7 @@
     "eslint-plugin-jsx-a11y": "~6.1.1",
     "eslint-plugin-react": "~7.10.0",
     "jest": "~23.4.2",
+    "nodemon": "^1.18.3",
     "raf": "~3.4.0",
     "react-addons-test-utils": "~15.6.0",
     "react-test-renderer": "~16.4.1"
