@@ -21,9 +21,11 @@
     "fetch": true,
     "jest": true,
     "beforeEach": true,
-    "window": true
+    "window": true,
+    "app": true
   },
   "rules": {
+    "import/prefer-default-export": 0,
     "indent": [
       1,
       2,

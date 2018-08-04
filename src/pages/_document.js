@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="stylesheet" href="/static/styles/reset.css" />
+          <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
           {this.props.styleTags}
         </Head>
         <body>
