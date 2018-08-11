@@ -8,16 +8,18 @@ export const getOrigin = req => (req ? `${req.protocol}://${req.get('Host')}` : 
  * @param {Options} options
  */
 const fetchHandler = (url, options = {}) => {
-  const { headers, otherOptions } = options;
+  const { headers, body, ...otherOptions } = options;
 
   return unfetch(
-    `http://localhost:3001${url}`,
+    `http://localhost:3001/api${url}`,
     {
       ...otherOptions,
       headers: {
+        'Content-Type': 'application/json',
         Authorization: 'checked',
         ...headers,
       },
+      body: JSON.stringify(body),
     },
   );
 };

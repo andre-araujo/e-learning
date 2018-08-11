@@ -8,6 +8,20 @@ const {
 
 global.app = express();
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, authorization');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  if ('OPTIONS' == req.method) {
+    res.sendStatus(200);
+  }
+  else {
+    next();
+  }
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

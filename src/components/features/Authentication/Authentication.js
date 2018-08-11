@@ -1,8 +1,12 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
+
+import AuthForm from './components/AuthForm';
 
 import Button from '../../elements/Button';
-import Input from '../../elements/TextInput';
 import ModalProvider from '../../modules/ModalProvider';
+
+import * as actions from '../../../lib/stateManager/actions';
 
 import {
   AuthButtons,
@@ -13,30 +17,32 @@ class Authentication extends Component {
     authenticated: false,
   }
 
-  renderForm = () => (
-    <form>
-      <Input label="E-mail" />
-      <Input label="Senha" />
-      <Button secondary full>
-                Entrar
-      </Button>
-    </form>
-  )
-
   render() {
     const { authenticated } = this.state;
+    const {
+      getToken,
+      singUp,
+    } = this.props;
 
     return (
       <div>
         {
           !authenticated && (
             <AuthButtons>
-              <ModalProvider.Toggle title="Login" render={this.renderForm}>
+              <ModalProvider.Toggle
+                title="Login"
+                render={() => (
+                  <AuthForm login onSubmit={getToken} />)}
+              >
                 <Button secondary gap={15}>
                 Entrar
                 </Button>
               </ModalProvider.Toggle>
-              <ModalProvider.Toggle render={() => null}>
+              <ModalProvider.Toggle
+                title="Login"
+                render={() => (
+                  <AuthForm onSubmit={singUp} />)}
+              >
                 <Button>
                 cadastrar
                 </Button>
@@ -49,4 +55,26 @@ class Authentication extends Component {
   }
 }
 
-export default Authentication;
+const mapStateToProps = ({ authentication }) => ({ authentication });
+
+const mapDispatchToProps = dispatch => ({
+  getToken: ({
+    email,
+    password,
+  }) => dispatch(actions.getToken({
+    email,
+    password,
+  })),
+  getUser: () => dispatch(actions.getUser()),
+  singUp: ({
+    name,
+    email,
+    password,
+  }) => dispatch(actions.singUp({
+    name,
+    email,
+    password,
+  })),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authentication);

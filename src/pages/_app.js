@@ -2,7 +2,7 @@ import App, { Container } from 'next/app';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import store from '../lib/redux/store';
+import store from '../lib/stateManager/store';
 import ModalProvider from '../components/modules/ModalProvider';
 
 class MyApp extends App {
