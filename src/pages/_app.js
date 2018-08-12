@@ -1,9 +1,9 @@
 import App, { Container } from 'next/app';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 
 import store from '../lib/stateManager/store';
-import ModalProvider from '../components/modules/ModalProvider';
+import { LoadingOverlay, ModalProvider } from '../components';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -21,9 +21,12 @@ class MyApp extends App {
     return (
       <Container>
         <Provider store={store}>
-          <ModalProvider>
-            <Component {...pageProps} />
-          </ModalProvider>
+          <Fragment>
+            <ModalProvider>
+              <Component {...pageProps} />
+            </ModalProvider>
+            <LoadingOverlay />
+          </Fragment>
         </Provider>
       </Container>
     );
