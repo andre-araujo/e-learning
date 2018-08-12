@@ -15,7 +15,9 @@ function tokenController(req, res) {
     password,
   } = req.body;
 
-  Account.findOneAndUpdate(
+  if (!req.body.password || !req.body.email) return res.status(400).send({ message: INVALID_USER });
+
+  return Account.findOneAndUpdate(
     {
       email,
       password: MD5(password).toString(),
@@ -23,22 +25,21 @@ function tokenController(req, res) {
     { $set: { logged_at: new Date() } },
     (err, account) => {
       if (err) {
-        res.status(500).send({ status: err });
+        return res.status(500).send({ message: err });
       }
 
       if (account) {
         const payload = { id: account.id };
         const token = jwt.sign(payload, SECRET, { expiresIn: TOKEN_EXPIRATION_TIME });
 
-        res.json({
-          status: SUCCESS,
+        return res.send({
+          message: SUCCESS,
           token,
         });
-      } else {
-        res.status(401).send({
-          status: INVALID_USER,
-        });
       }
+      return res.status(401).send({
+        message: INVALID_USER,
+      });
     },
   );
 }

@@ -1,33 +1,49 @@
 import { Component } from 'react';
 
-import Button from '../../../elements/Button';
-import Input from '../../../elements/TextInput';
+import { AlertBar, Button, TextInput } from '../../..';
 
 class AuthForm extends Component {
   state = {
     name: '',
     email: '',
     password: '',
+    status: undefined,
   };
 
   render() {
-    const { onSubmit, login } = this.props;
+    const {
+      onSubmit,
+      login,
+    } = this.props;
+
     const {
       name,
       email,
       password,
+      status,
     } = this.state;
+
+    // TODO: move to constants
+    const error = (status >= 400) && 'Email ou senha inválidos';
 
     return (
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onSubmit({ ...this.state });
+          onSubmit({ ...this.state })
+            .then((resp) => {
+              this.setState({ status: resp.payload.status });
+              return resp;
+            });
         }}
       >
+        <AlertBar>
+          {error}
+        </AlertBar>
+
         {
           !login && (
-            <Input
+            <TextInput
               label="Nome"
               name="name"
               value={name}
@@ -37,7 +53,7 @@ class AuthForm extends Component {
             />
           )
         }
-        <Input
+        <TextInput
           label="E-mail"
           name="email"
           value={email}
@@ -45,7 +61,7 @@ class AuthForm extends Component {
             email: e.target.value,
           })}
         />
-        <Input
+        <TextInput
           label="Senha"
           name="password"
           value={password}

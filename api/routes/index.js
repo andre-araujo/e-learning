@@ -14,6 +14,6 @@ app.post('/api/account/token', require('../controllers/token.controller'));
 
 app.all('*', (req, res) => {
   res.status(404).send({
-    status: NOT_FOUND,
+    message: NOT_FOUND,
   });
 });

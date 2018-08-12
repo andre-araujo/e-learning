@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import Router from 'next/router';
 
 import AuthForm from './components/AuthForm';
 
@@ -10,7 +11,7 @@ import * as actions from '../../../lib/stateManager/actions';
 
 import {
   AuthButtons,
-} from './styles';
+} from './Authentication.styles';
 
 class Authentication extends Component {
   state = {
@@ -20,9 +21,14 @@ class Authentication extends Component {
   render() {
     const { authenticated } = this.state;
     const {
-      getToken,
-      singUp,
+      requestGetToken,
+      requestSingUp,
+      authentication,
     } = this.props;
+
+    if (authentication.token) {
+      Router.push('/dashboard');
+    }
 
     return (
       <div>
@@ -31,17 +37,23 @@ class Authentication extends Component {
             <AuthButtons>
               <ModalProvider.Toggle
                 title="Login"
-                render={() => (
-                  <AuthForm login onSubmit={getToken} />)}
+                render={(
+                  <AuthForm
+                    login
+                    onSubmit={requestGetToken}
+                  />
+                )}
               >
                 <Button secondary gap={15}>
                 Entrar
                 </Button>
               </ModalProvider.Toggle>
               <ModalProvider.Toggle
-                title="Login"
-                render={() => (
-                  <AuthForm onSubmit={singUp} />)}
+                title="Cadastrar"
+                render={(
+                  <AuthForm
+                    onSubmit={requestSingUp}
+                  />)}
               >
                 <Button>
                 cadastrar
@@ -58,19 +70,19 @@ class Authentication extends Component {
 const mapStateToProps = ({ authentication }) => ({ authentication });
 
 const mapDispatchToProps = dispatch => ({
-  getToken: ({
+  requestGetToken: ({
     email,
     password,
-  }) => dispatch(actions.getToken({
+  }) => dispatch(actions.requestGetToken({
     email,
     password,
   })),
-  getUser: () => dispatch(actions.getUser()),
-  singUp: ({
+  requestGetUser: () => dispatch(actions.requestGetUser()),
+  requestSingUp: ({
     name,
     email,
     password,
-  }) => dispatch(actions.singUp({
+  }) => dispatch(actions.requestSingUp({
     name,
     email,
     password,

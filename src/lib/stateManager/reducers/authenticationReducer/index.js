@@ -1,27 +1,37 @@
+import { IS_CLIENT } from '../../../constants';
 import {
   SINGUP,
   GET_TOKEN,
   GET_USER,
 } from '../../actions';
 
-function authenticationReducer(state = {}, action = {}) {
+const initialState = {
+  singUp: {},
+  getToken: {},
+  getUser: {},
+  token: IS_CLIENT && window.localStorage.getItem('token'),
+};
+
+function authenticationReducer(state = initialState, action = {}) {
   switch (action.type) {
     case (SINGUP): {
       return {
         ...state,
         singUp: action.payload,
+        token: action.payload.status && action.payload.token,
       };
     }
     case (GET_TOKEN): {
       return {
         ...state,
-        token: action.payload,
+        getToken: action.payload,
+        token: action.payload.status && action.payload.token,
       };
     }
     case (GET_USER): {
       return {
         ...state,
-        user: action.payload,
+        getUser: action.payload,
       };
     }
     default:

@@ -9,19 +9,19 @@ function authentication(req, res, next) {
   passport.authenticate('jwt', { session: false }, (err, user, info) => {
     if (info && info.name === 'JsonWebTokenError') {
       return res.status(403).json({
-        status: INVALID_TOKEN,
+        message: INVALID_TOKEN,
       });
     }
 
     if (info && info.name === 'TokenExpiredError') {
       return res.status(403).json({
-        status: EXPIRED_TOKEN,
+        message: EXPIRED_TOKEN,
       });
     }
 
     if (!user) {
       return res.status(401).send({
-        status: INVALID_USER,
+        message: INVALID_USER,
       });
     }
 

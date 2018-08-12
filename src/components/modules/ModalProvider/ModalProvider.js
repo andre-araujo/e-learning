@@ -1,4 +1,5 @@
 import { Component, createContext } from 'react';
+import Router from 'next/router';
 import { node } from 'prop-types';
 import { FaTimes } from 'react-icons/fa';
 
@@ -43,6 +44,24 @@ class ModalProvider extends Component {
     title: '',
   };
 
+  componentDidMount() {
+    Router.onRouteChangeComplete = () => {
+      const { isOpen } = this.state;
+
+      if (isOpen) {
+        this.setState({
+          isOpen: false,
+          render: null,
+          title: '',
+        });
+      }
+    };
+  }
+
+  componentWillUnmount() {
+    Router.onRouteChangeComplete = undefined;
+  }
+
   setRenderComponent = (render) => {
     this.setState({ render });
   }
@@ -85,7 +104,7 @@ class ModalProvider extends Component {
                   </ModalProvider.Toggle>
                 </Header>
                 <Content>
-                  {render && render()}
+                  {typeof render === 'function' ? render() : render}
                 </Content>
               </Inner>
               <ModalProvider.Toggle className="overlay" />

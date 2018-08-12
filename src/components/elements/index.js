@@ -1,3 +1,4 @@
+export { default as AlertBar } from './AlertBar';
 export { default as Button } from './Button';
 export { default as CoverImage } from './CoverImage';
 export { default as Loading } from './Loading';

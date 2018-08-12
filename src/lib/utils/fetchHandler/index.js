@@ -21,7 +21,7 @@ const fetchHandler = (url, options = {}) => {
       },
       body: JSON.stringify(body),
     },
-  );
+  ).then(resp => resp.json().then(result => ({ ...result, status: resp.status })));
 };
 
 export default fetchHandler;

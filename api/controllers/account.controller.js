@@ -6,17 +6,17 @@ const {
 const Account = require('../models/Account');
 
 function accountController(req, res) {
-  Account.findOne(
+  return Account.findOne(
     {
       _id: req.user.id,
     },
     (err, account) => {
       if (err) {
-        res.status(500).send({ status: err });
+        return res.status(500).send({ message: err });
       }
 
       if (!account) {
-        res.status(404).send({ status: USER_NOT_FOUND });
+        return res.status(404).send({ message: USER_NOT_FOUND });
       }
 
       const {
@@ -24,8 +24,8 @@ function accountController(req, res) {
         ...accountResult
       } = account.toObject();
 
-      res.json({
-        status: SUCCESS,
+      return res.send({
+        message: SUCCESS,
         account: accountResult,
       });
     },

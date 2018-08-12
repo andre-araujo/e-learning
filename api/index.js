@@ -14,12 +14,11 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, authorization');
   res.setHeader('Access-Control-Allow-Credentials', true);
 
-  if ('OPTIONS' == req.method) {
-    res.sendStatus(200);
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
   }
-  else {
-    next();
-  }
+
+  return next();
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,7 +31,7 @@ mongoose.connect(
   { useNewUrlParser: true },
 );
 
-require('./routes/index.js');
+require('./routes');
 
 app.listen(APP_PORT, () => {
   process.stdout.write(`> Ready on http://localhost:${APP_PORT}\n`);

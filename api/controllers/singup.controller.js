@@ -4,6 +4,7 @@ const {
   SECRET,
   TOKEN_EXPIRATION_TIME,
   SUCCESS,
+  INVALID_USER,
 } = require('../constants');
 
 const Account = require('../models/Account');
@@ -14,6 +15,8 @@ function singup(req, res) {
     password,
     ...accountData
   } = req.body;
+
+  if (!req.body.password || !req.body.email) return res.status(400).send({ message: INVALID_USER });
 
   const account = {
     ...accountData,
@@ -26,7 +29,7 @@ function singup(req, res) {
     logged_at: new Date(),
   };
 
-  Account.findOneAndUpdate(
+  return Account.findOneAndUpdate(
     { email: accountData.email },
     {
       ...account,
@@ -35,7 +38,7 @@ function singup(req, res) {
     { new: true, upsert: true },
     (err, updatedAccount) => {
       if (err) {
-        res.status(500).send({ status: err });
+        return res.status(500).send({ message: err });
       }
 
       const payload = { id: updatedAccount.id };
@@ -46,8 +49,8 @@ function singup(req, res) {
         ...updatedAccountResult
       } = updatedAccount.toObject();
 
-      res.json({
-        status: SUCCESS,
+      return res.send({
+        message: SUCCESS,
         token,
         account: updatedAccountResult,
       });
