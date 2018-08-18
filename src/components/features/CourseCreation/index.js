@@ -1,3 +1,9 @@
+import { connect } from 'react-redux';
+
 import CourseCreation from './CourseCreation';
 
-export default CourseCreation;
+const mapStateToProps = ({ authentication }) => ({
+  authentication,
+});
+
+export default connect(mapStateToProps)(CourseCreation);
