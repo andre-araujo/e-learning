@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { string, node } from 'prop-types';
 
 import {
@@ -14,9 +15,13 @@ function Header({
   return (
     <Container>
       <Content>
-        <Title>
-          {title}
-        </Title>
+        <Link href="/">
+          <a href="/">
+            <Title>
+              {title}
+            </Title>
+          </a>
+        </Link>
         {addOn}
       </Content>
     </Container>

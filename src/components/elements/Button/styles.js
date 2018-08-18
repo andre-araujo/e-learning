@@ -14,9 +14,6 @@ export const StyledButton = styled.button`
     .2s background,
     .2s transform;
 
-
-
-
   ${({ full }) => full && css`
     width: 100%;
   `}

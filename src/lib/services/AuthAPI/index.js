@@ -2,6 +2,11 @@ import fetchHandler from '../../utils/fetchHandler';
 
 export const getOrigin = req => (req ? `${req.protocol}://${req.get('Host')}` : window.location.origin);
 
+const storeToken = (resp) => {
+  window.localStorage.setItem('token', resp.token);
+  return resp;
+};
+
 export function singUp({
   name,
   email,
@@ -19,7 +24,7 @@ export function singUp({
         phone,
       },
     },
-  );
+  ).then(storeToken);
 }
 
 export function getToken({
@@ -35,7 +40,7 @@ export function getToken({
         password,
       },
     },
-  );
+  ).then(storeToken);
 }
 
 export function getUser() {

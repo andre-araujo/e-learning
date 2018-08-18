@@ -3,7 +3,14 @@ import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 
 import store from '../lib/stateManager/store';
-import { LoadingOverlay, ModalProvider } from '../components';
+import {
+  LoadingOverlay,
+  ModalProvider,
+  Header,
+  Authentication,
+  UserMenu,
+} from '../components';
+
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -23,6 +30,13 @@ class MyApp extends App {
         <Provider store={store}>
           <Fragment>
             <ModalProvider>
+              <Header addOn={(
+                <Fragment>
+                  <UserMenu />
+                  <Authentication />
+                </Fragment>
+              )}
+              />
               <Component {...pageProps} />
             </ModalProvider>
             <LoadingOverlay />
