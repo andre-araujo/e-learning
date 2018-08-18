@@ -8,7 +8,9 @@ export const StyledButton = styled.button`
   justify-content: center;
   padding : 0 20px;
   outline: none;
+  user-select: none;
   cursor: pointer;
+
   transition:
     .2s color,
     .2s background,

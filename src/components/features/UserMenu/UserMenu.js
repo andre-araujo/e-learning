@@ -1,11 +1,9 @@
 import React from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
-import { string, node, func } from 'prop-types';
+import { func } from 'prop-types';
 
 import {
-  Title,
   Container,
-  Content,
 } from './UserMenu.styles';
 
 import { InternalLink } from '../..';
