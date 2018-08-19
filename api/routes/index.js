@@ -8,9 +8,12 @@ passport.use(jwtMiddleware);
 
 app.use(passport.initialize());
 
-app.get('/api/account/me', authentication, require('../controllers/account.controller'));
 app.post('/api/account/singup', require('../controllers/singup.controller'));
 app.post('/api/account/token', require('../controllers/token.controller'));
+app.get('/api/account/me', authentication, require('../controllers/account.controller'));
+
+app.put('/api/courses', authentication, require('../controllers/courses/createCourse.controller'));
+app.get('/api/courses', authentication, require('../controllers/courses/getCourses.controller'));
 
 app.all('*', (req, res) => {
   res.status(404).send({

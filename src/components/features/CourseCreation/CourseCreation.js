@@ -3,12 +3,13 @@ import { Form } from '../../modules';
 
 function CourseCreation({
   authentication,
+  requestCreateCourse,
 }) {
   if (!authentication.getUser.account) return null;
 
   return (
     <Wrapper>
-      <Form name="create-course" onSubmit={() => {}}>
+      <Form name="create-course" onSubmit={requestCreateCourse}>
         <Form.Field
           name="name"
           label="Nome do curso"

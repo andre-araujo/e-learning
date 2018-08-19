@@ -20,10 +20,6 @@ const schema = new Schema({
     required: true,
   },
   instructorId: {
-    type: Number,
-    required: true,
-  },
-  password: {
     type: String,
     required: true,
   },
@@ -46,4 +42,4 @@ schema.options.toObject.transform = (doc, { _id, __v, ...ret }) => ({
   ...ret,
 });
 
-module.exports = mongoose.model('Account', schema);
+module.exports = mongoose.model('Course', schema);

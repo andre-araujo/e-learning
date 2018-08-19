@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import loadingReducer from 'redux-loading-middleware/loadingReducer';
 
 import authentication from './authenticationReducer';
+import coursesReducer from './coursesReducer';
+
 import { LOGOUT } from '../actions';
 import { IS_CLIENT } from '../../constants';
 
@@ -16,7 +18,11 @@ const rootReducer = (state, action) => {
     }
   }
 
-  return combineReducers({ authentication, globalLoading: loadingReducer })(nextState, action);
+  return combineReducers({
+    authentication,
+    courses: coursesReducer,
+    globalLoading: loadingReducer,
+  })(nextState, action);
 };
 
 

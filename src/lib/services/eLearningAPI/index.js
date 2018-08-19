@@ -47,9 +47,33 @@ export function getUser() {
   return fetchHandler(
     '/account/me', {
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+    },
+  );
+}
+
+export function createCourse({
+  name,
+  instructorName,
+  category,
+  keyWords,
+}) {
+  return fetchHandler(
+    '/courses', {
+      method: 'PUT',
+      body: {
+        name,
+        instructorName,
+        category,
+        keyWords,
       },
+    },
+  );
+}
+
+export function getCourses() {
+  return fetchHandler(
+    '/courses', {
+      method: 'GET',
     },
   );
 }
