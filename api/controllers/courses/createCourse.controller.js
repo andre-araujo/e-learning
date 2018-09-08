@@ -1,7 +1,3 @@
-const {
-  SUCCESS,
-} = require('../../constants');
-
 const Course = require('../../models/Course');
 
 function createCourseController(req, res) {
@@ -22,10 +18,7 @@ function createCourseController(req, res) {
 
   course
     .save()
-    .then(createdCourse => res.send({
-      message: SUCCESS,
-      body: createdCourse,
-    }))
+    .then(data => res.send(data))
     .catch(err => res.status(500).send({ message: err }));
 }
 

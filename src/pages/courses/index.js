@@ -1,13 +1,12 @@
 import { Fragment } from 'react';
 import withAuthenticatedRoute from '../../_HOCs/withAuthenticatedRoute';
-import CourseList from '../../components/features/CourseList';
 
-function Dashboard() {
+function Courses() {
   return (
     <Fragment>
-      <CourseList />
+      Courses
     </Fragment>
   );
 }
 
-export default withAuthenticatedRoute(Dashboard);
+export default withAuthenticatedRoute(Courses);

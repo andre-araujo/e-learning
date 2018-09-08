@@ -1,4 +1,20 @@
+import { createRequestService } from 'redux-create-request';
 import fetchHandler from '../../utils/fetchHandler';
+
+async function responseParser(resp) {
+  try {
+    const jsonBody = await resp.json();
+
+    const parsedResponse = {
+      ...jsonBody,
+      status: resp.status,
+    };
+
+    return parsedResponse;
+  } catch (e) {
+    throw new Error('fetch error', e);
+  }
+}
 
 export const getOrigin = req => (req ? `${req.protocol}://${req.get('Host')}` : window.location.origin);
 
@@ -24,7 +40,9 @@ export function singUp({
         phone,
       },
     },
-  ).then(storeToken);
+  )
+    .then(responseParser)
+    .then(storeToken);
 }
 
 export function getToken({
@@ -40,7 +58,9 @@ export function getToken({
         password,
       },
     },
-  ).then(storeToken);
+  )
+    .then(responseParser)
+    .then(storeToken);
 }
 
 export function getUser() {
@@ -48,16 +68,18 @@ export function getUser() {
     '/account/me', {
       method: 'GET',
     },
-  );
+  )
+    .then(responseParser);
 }
 
-export function createCourse({
-  name,
-  instructorName,
-  category,
-  keyWords,
-}) {
-  return fetchHandler(
+export const createCourseService = createRequestService({
+  type: 'CREATE_COURSE',
+  request: ({
+    name,
+    instructorName,
+    category,
+    keyWords,
+  }) => fetchHandler(
     '/courses', {
       method: 'PUT',
       body: {
@@ -67,13 +89,14 @@ export function createCourse({
         keyWords,
       },
     },
-  );
-}
+  ),
+});
 
-export function getCourses() {
-  return fetchHandler(
+export const getCourseService = createRequestService({
+  type: 'GET_COURSE',
+  request: () => fetchHandler(
     '/courses', {
       method: 'GET',
     },
-  );
-}
+  ),
+});

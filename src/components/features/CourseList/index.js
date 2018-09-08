@@ -4,7 +4,7 @@ import CourseList from './CourseList';
 import { actions } from '../../../lib';
 
 const mapStateToProps = ({ courses }) => ({
-  courses: courses.getCourses.courses,
+  courses,
 });
 
 const mapDispatchToProps = dispatch => ({

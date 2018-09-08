@@ -28,11 +28,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html,
 body {
   font-weight: 400;
   font-family: Roboto;
   line-height: 1;
   font-weight: 400;
+  overflow-x: hidden;
+  width: 100vw;
 }
 ol, ul {
 	list-style: none;

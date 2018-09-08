@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { array, func } from 'prop-types';
+import { shape, array, func } from 'prop-types';
+import { DefaultContent, CourseResumeCard } from '../../modules';
+import { Wrapper } from '../../elements';
 
 class CourseList extends Component {
   componentDidMount() {
@@ -15,14 +17,35 @@ class CourseList extends Component {
       courses,
     } = this.props;
 
+    const courseData = courses.payload || [];
+
     return (
-      <ul>
-        {courses.map(course => (
-          <li>
-            {course.name}
-          </li>
-        ))}
-      </ul>
+      <Wrapper>
+        <ul>
+          {courseData.map(course => (
+            <li key={course.id}>
+              <CourseResumeCard
+                id={course.id}
+                name={course.name}
+                instructorName={course.instructorName}
+                category={course.category}
+                keyWords={course.keyWords}
+                updated_at={course.updated_at}
+                created_at={course.created_at}
+              />
+            </li>
+          ))}
+
+          {!courseData && (
+            <DefaultContent
+              title="Você ainda não se inscreveu em nenhum curso."
+              description="Se inscreva em cursos para ampliar seus conhecimentos."
+              linkText="Ir para lista de cursos"
+              href="/"
+            />
+          )}
+        </ul>
+      </Wrapper>
     );
   }
 }
@@ -32,7 +55,9 @@ CourseList.defaultProps = {
 };
 
 CourseList.propTypes = {
-  courses: array, // eslint-disable-line
+  courses: shape({
+    payload: array,
+  }),
   getCourses: func.isRequired,
 };
 
