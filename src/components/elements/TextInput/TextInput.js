@@ -16,7 +16,6 @@ function TextInput({
       <Content>
         <Field
           {...inputProps}
-          type="text"
           required
           name={inputProps.name}
         />

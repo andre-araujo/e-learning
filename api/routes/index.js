@@ -14,6 +14,7 @@ app.get('/api/account/me', authentication, require('../controllers/account.contr
 
 app.put('/api/courses', authentication, require('../controllers/courses/createCourse.controller'));
 app.get('/api/courses', authentication, require('../controllers/courses/getCourses.controller'));
+app.get('/api/courses/:id', authentication, require('../controllers/courses/getCourses.controller'));
 
 app.all('*', (req, res) => {
   res.status(404).send({

@@ -100,3 +100,12 @@ export const getCourseService = createRequestService({
     },
   ),
 });
+
+export const getCourseDetailService = createRequestService({
+  type: 'GET_COURSE_DETAIL',
+  request: id => fetchHandler(
+    `/courses/${id}`, {
+      method: 'GET',
+    },
+  ),
+});

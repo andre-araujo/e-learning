@@ -2,7 +2,11 @@ import { combineReducers } from 'redux';
 import loadingReducer from 'redux-loading-middleware/loadingReducer';
 
 import authentication from './authenticationReducer';
-import { createCourseService, getCourseService } from '../../services/eLearningAPI';
+import {
+  createCourseService,
+  getCourseService,
+  getCourseDetailService,
+} from '../../services/eLearningAPI';
 
 import { LOGOUT } from '../actions';
 import { IS_CLIENT } from '../../constants';
@@ -23,6 +27,7 @@ const rootReducer = (state, action) => {
     authentication,
     createCourse: createCourseService.reducer,
     courses: getCourseService.reducer,
+    courseDetail: getCourseDetailService.reducer,
     globalLoading: loadingReducer,
   })(nextState, action);
 };

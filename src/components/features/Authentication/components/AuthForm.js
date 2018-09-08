@@ -65,6 +65,7 @@ class AuthForm extends Component {
           label="Senha"
           name="password"
           value={password}
+          type="password"
           onChange={e => this.setState({
             password: e.target.value,
           })}
