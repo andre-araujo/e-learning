@@ -9,7 +9,7 @@ import rootReducer from './reducers';
 const store = createStore(
   rootReducer,
   composeWithDevTools(
-    applyMiddleware(loadingMiddleware, thunk, createRequestMiddleware),
+    applyMiddleware(loadingMiddleware, createRequestMiddleware, thunk),
   ),
 );
 

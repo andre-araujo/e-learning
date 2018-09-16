@@ -1,18 +1,13 @@
 import { Fragment } from 'react';
 import withAuthenticatedRoute from '../../_HOCs/withAuthenticatedRoute';
-import { DefaultContent } from '../../components';
+import InstructorPanel from '../../components/features/InstructorPanel';
 
-function InstructorPanel() {
+function InstructorPanelPage() {
   return (
     <Fragment>
-      <DefaultContent
-        title="Você ainda não tem nenhum curso criado."
-        description="Crie cursos e compartilhe seu conhecimento."
-        linkText="Criar um novo curso"
-        href="/instructor-panel/new-course"
-      />
+      <InstructorPanel />
     </Fragment>
   );
 }
 
-export default withAuthenticatedRoute(InstructorPanel);
+export default withAuthenticatedRoute(InstructorPanelPage);

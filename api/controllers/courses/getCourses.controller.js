@@ -12,6 +12,7 @@ function getCoursesController(req, res) {
   }
 
   return Course.find()
+    .sort({ updated_at: 'desc' })
     .then((data) => {
       res.send(data);
     })

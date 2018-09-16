@@ -1,2 +1,2 @@
 export { default as fetchHandler } from './fetchHandler';
-export { default as delve } from 'dlv';
+export { default as deepSelect } from './deepSelect';

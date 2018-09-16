@@ -15,8 +15,6 @@ class CourseDetails extends Component {
   }
 
   render() {
-    const { courseDetail } = this.props;
-    console.log(courseDetail);
     return (
       <Container>
         <Hero />

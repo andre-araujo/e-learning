@@ -10,6 +10,7 @@ export const StyledText = tag => styled[tag]`
   ${({ type }) => {
     if (type === 'title') {
       return css`
+        font-size: 30px;
         font-weight: bolder;
       `;
     }

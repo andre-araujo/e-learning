@@ -34,6 +34,10 @@ const schema = new Schema({
     type: Date,
     default: Date.now,
   },
+  admin: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 if (!schema.options.toObject) {

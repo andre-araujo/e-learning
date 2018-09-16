@@ -45,6 +45,10 @@ export const StyledButton = styled.button`
   ${({ gap }) => gap && css`
     margin-right: ${gap}px;
   `};
+
+  ${({ margin }) => margin && css`
+    margin: ${margin};
+  `};
 `;
 
 export const Text = styled.span`

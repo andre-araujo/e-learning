@@ -1,17 +1,9 @@
 import { connect } from 'react-redux';
-import Router from 'next/router';
 
 import Authentication from './Authentication';
 import { actions } from '../../../lib';
 
 const mapStateToProps = ({ authentication }) => ({ authentication });
-
-const goToDashboard = (resp) => {
-  if (resp.payload.status === 200) {
-    Router.push('/my-courses');
-  }
-  return resp;
-};
 
 const mapDispatchToProps = dispatch => ({
   requestGetUser: () => dispatch(actions.requestGetUser()),
@@ -21,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
   }) => dispatch(actions.requestGetToken({
     email,
     password,
-  })).then(goToDashboard),
+  })),
   requestSingUp: ({
     name,
     email,
@@ -30,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
     name,
     email,
     password,
-  })).then(goToDashboard),
+  })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Authentication);

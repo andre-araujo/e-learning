@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import Router from 'next/router';
 
 import AuthForm from './components/AuthForm';
 
@@ -18,6 +19,14 @@ function Authentication({
 }) {
   if (authentication.token) return null;
 
+  const goToDashboard = (resp) => {
+    if (resp.payload.status === 200 && resp.payload.token) {
+      const isAdmin = JSON.parse(window.atob(resp.payload.token.split('.')[1])).admin;
+      Router.push(isAdmin ? '/instructor-panel' : '/my-courses');
+    }
+    return resp;
+  };
+
   return (
     <AuthButtons>
       <ModalProvider.Toggle
@@ -25,7 +34,7 @@ function Authentication({
         render={(
           <AuthForm
             login
-            onSubmit={requestGetToken}
+            onSubmit={data => requestGetToken(data).then(goToDashboard)}
           />
         )}
       >
@@ -37,7 +46,7 @@ function Authentication({
         title="Cadastrar"
         render={(
           <AuthForm
-            onSubmit={requestSingUp}
+            onSubmit={data => requestSingUp(data).then(goToDashboard)}
           />)}
       >
         <Button>

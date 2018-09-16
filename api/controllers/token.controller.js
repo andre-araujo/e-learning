@@ -29,7 +29,7 @@ function tokenController(req, res) {
       }
 
       if (account) {
-        const payload = { id: account.id };
+        const payload = { id: account.id, admin: account.admin };
         const token = jwt.sign(payload, SECRET, { expiresIn: TOKEN_EXPIRATION_TIME });
 
         return res.send({
