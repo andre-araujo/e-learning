@@ -8,9 +8,10 @@ import {
 function Wrapper({
   children,
   className,
+  margin,
 }) {
   return (
-    <Container className={className}>
+    <Container className={className} margin={margin}>
       {children}
     </Container>
   );

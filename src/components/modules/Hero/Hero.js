@@ -13,10 +13,11 @@ function Hero({
   title,
   children,
   imageUrl,
+  minHeight,
 }) {
   return (
     <CoverImage imageUrl={imageUrl}>
-      <Container>
+      <Container minHeight={minHeight}>
         <Title>
           {title}
         </Title>
@@ -32,12 +33,14 @@ Hero.defaultProps = {
   title: '',
   children: null,
   imageUrl: null,
+  minHeight: null,
 };
 
 Hero.propTypes = {
   title: string,
   children: node,
   imageUrl: string,
+  minHeight: string,
 };
 
 export default Hero;

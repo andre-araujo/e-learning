@@ -8,6 +8,8 @@ function createCourseController(req, res) {
     name,
   } = req.body;
 
+  if (!req.user.admin) return res.status(403).send({ message: 'Must be an admin' });
+
   const course = new Course({
     category,
     instructorName,
@@ -16,7 +18,7 @@ function createCourseController(req, res) {
     instructorId: req.user.id,
   });
 
-  course
+  return course
     .save()
     .then(data => res.send(data))
     .catch(err => res.status(500).send({ message: err }));

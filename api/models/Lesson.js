@@ -7,36 +7,18 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  instructorName: {
+  moduleName: {
     type: String,
     required: true,
   },
-  category: {
+  videoURL: {
     type: String,
-    required: true,
+    required: false,
   },
-  keyWords: {
+  youtubeVideoId: {
     type: String,
-    required: true,
+    required: false,
   },
-  instructorId: {
-    type: String,
-    required: true,
-  },
-  updated_at: {
-    type: Date,
-    default: Date.now,
-  },
-  created_at: {
-    type: Date,
-    default: Date.now,
-  },
-  lessons: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Lesson',
-    },
-  ],
 });
 
 if (!schema.options.toObject) {
@@ -48,4 +30,4 @@ schema.options.toObject.transform = (doc, { _id, __v, ...ret }) => ({
   ...ret,
 });
 
-module.exports = mongoose.model('Course', schema);
+module.exports = mongoose.model('Lesson', schema);

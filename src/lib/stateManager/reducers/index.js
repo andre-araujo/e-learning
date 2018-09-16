@@ -3,6 +3,7 @@ import loadingReducer from 'redux-loading-middleware/loadingReducer';
 
 import authentication from './authenticationReducer';
 import {
+  createLessonService,
   createCourseService,
   getCourseService,
   getCourseDetailService,
@@ -28,9 +29,9 @@ const rootReducer = (state, action) => {
     createCourse: createCourseService.reducer,
     courses: getCourseService.reducer,
     courseDetail: getCourseDetailService.reducer,
+    createLesson: createLessonService.reducer,
     globalLoading: loadingReducer,
   })(nextState, action);
 };
-
 
 export default rootReducer;

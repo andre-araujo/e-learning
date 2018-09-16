@@ -13,11 +13,17 @@ function InternalLink({
   ...props
 }) {
   return (
-    <Link href={href}>
-      <StyledAnchor gap={gap} {...props}>
+    href ? (
+      <Link href={href}>
+        <StyledAnchor gap={gap} {...props}>
+          {children}
+        </StyledAnchor>
+      </Link>
+    ) : (
+      <StyledAnchor gap={gap} {...props} href="#">
         {children}
       </StyledAnchor>
-    </Link>
+    )
   );
 }
 

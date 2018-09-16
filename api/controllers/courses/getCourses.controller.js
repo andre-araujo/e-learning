@@ -5,6 +5,7 @@ function getCoursesController(req, res) {
     return Course.findOne({
       _id: req.params.id,
     })
+      .populate('lessons')
       .then((data) => {
         res.send(data);
       })

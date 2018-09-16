@@ -75,6 +75,7 @@ class ModalProvider extends Component {
   };
 
   render() {
+    const { toggleModal, setRenderComponent, setTitle } = this;
     const { children } = this.props;
     const { isOpen, render, title } = this.state;
 
@@ -82,9 +83,9 @@ class ModalProvider extends Component {
       <ModalContext.Provider value={
         {
           isOpen,
-          toggleModal: this.toggleModal,
-          setRenderComponent: this.setRenderComponent,
-          setTitle: this.setTitle,
+          toggleModal,
+          setRenderComponent,
+          setTitle,
         }
       }
       >
@@ -104,7 +105,7 @@ class ModalProvider extends Component {
                   </ModalProvider.Toggle>
                 </Header>
                 <Content>
-                  {typeof render === 'function' ? render() : render}
+                  {typeof render === 'function' ? render({ isOpen, toggleModal }) : render}
                 </Content>
               </Inner>
               <ModalProvider.Toggle className="overlay" />

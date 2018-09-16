@@ -81,12 +81,34 @@ export const createCourseService = createRequestService({
     keyWords,
   }) => fetchHandler(
     '/courses', {
-      method: 'PUT',
+      method: 'POST',
       body: {
         name,
         instructorName,
         category,
         keyWords,
+      },
+    },
+  ),
+});
+
+export const createLessonService = createRequestService({
+  type: 'CREATE_LESSON',
+  request: ({
+    courseId,
+    lessonId,
+    name,
+    videoURL,
+    youtubeVideoId,
+    moduleName,
+  }) => fetchHandler(
+    `/courses/${courseId}/lessons${lessonId ? `/${lessonId}` : ''}`, {
+      method: 'POST',
+      body: {
+        name,
+        videoURL,
+        youtubeVideoId,
+        moduleName,
       },
     },
   ),

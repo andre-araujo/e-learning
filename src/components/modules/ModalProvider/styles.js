@@ -57,6 +57,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 15px;
+  padding-right: 40px;
   border-radius: 10px 10px 0 0;
   position: relative;
   font-size: 20px;

@@ -1,5 +1,41 @@
 import styled from 'styled-components';
 
-export const Container = styled.h1`
-    font-size: 1rem;
+export const CourseModule = styled.section`
+  padding: 15px 15px 0;
+  background: #fff;
+  border: 1px solid #eee;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 3px 0px rgba(0, 0, 0, .2);
+`;
+
+export const LessonList = styled.ol`
+  margin-top: 15px;
+`;
+
+export const LessonItem = styled.li`
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #eee;
+  position: relative;
+
+  svg {
+    font-size: 18px;
+    margin-right: 15px;
+  }
+`;
+
+
+export const EditButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  padding: 0;
+  outline: none;
+  font-size: 18px;
+
+  :hover {
+    color: orange;
+  }
 `;

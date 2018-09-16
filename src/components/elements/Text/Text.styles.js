@@ -12,6 +12,7 @@ export const StyledText = tag => styled[tag]`
       return css`
         font-size: 30px;
         font-weight: bolder;
+        color: #333;
       `;
     }
 
@@ -19,6 +20,7 @@ export const StyledText = tag => styled[tag]`
       return css`
         font-weight: bold;
         font-size: 20px;
+        color: #555;
       `;
     }
 
@@ -26,6 +28,7 @@ export const StyledText = tag => styled[tag]`
       return css`
         font-size: 0.875rem;
         font-weight: 400;
+        color: #000;
     `;
     }
 

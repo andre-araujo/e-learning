@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Wrapper from '../../elements/Wrapper';
 
@@ -6,8 +6,16 @@ export const Container = styled(Wrapper)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 400px;
-  height: calc(50vh);
+
+  ${({ minHeight }) => !minHeight && css`
+    min-height: 400px;
+    height: calc(50vh);
+  `}
+
+  ${({ minHeight }) => minHeight && css`
+    min-height: ${minHeight};
+    height: auto;
+  `}
 `;
 
 export const Title = styled.h1`

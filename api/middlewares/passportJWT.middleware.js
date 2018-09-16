@@ -27,7 +27,7 @@ const strategy = new JwtStrategy(opts, ((payload, done) => {
       return done(new Error(USER_NOT_FOUND), null);
     }
 
-    return done(null, { id: account.id });
+    return done(null, { id: account.id, admin: account.admin });
   });
 }));
 
