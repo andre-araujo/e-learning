@@ -14,6 +14,7 @@ app.get('/api/account/me', authentication, require('../controllers/account.contr
 
 app.post('/api/courses', authentication, require('../controllers/courses/createCourse.controller'));
 app.post('/api/courses/:courseId', authentication, require('../controllers/courses/createCourse.controller'));
+app.patch('/api/courses/:courseId/join', authentication, require('../controllers/courses/joinCourse.controller'));
 
 app.get('/api/courses', authentication, require('../controllers/courses/getCourses.controller'));
 app.get('/api/courses/:courseId', authentication, require('../controllers/courses/getCourses.controller'));

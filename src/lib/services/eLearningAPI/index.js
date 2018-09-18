@@ -132,3 +132,12 @@ export const getCourseDetailService = createRequestService({
     },
   ),
 });
+
+export const joinCourseService = createRequestService({
+  type: 'JOIN_COURSE',
+  request: id => fetchHandler(
+    `/courses/${id}/join`, {
+      method: 'PATCH',
+    },
+  ),
+});

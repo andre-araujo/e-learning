@@ -39,10 +39,12 @@ class CourseDetails extends Component {
   }
 
   render() {
-    const { courseDetail, authentication } = this.props;
+    const { courseDetail, authentication, joinCourse } = this.props;
     const data = courseDetail.payload || {};
 
     if (!data.id) return null;
+    const userCourses = deepSelect(authentication, 'getUser.account.courses', []);
+    const alreadyJoin = userCourses.indexOf(data.id) !== -1;
 
     const courseModules = data.lessons.reduce((acc, courseContent) => {
       if (!acc[courseContent.moduleName]) acc[courseContent.moduleName] = [];
@@ -75,6 +77,13 @@ class CourseDetails extends Component {
             </Fragment>
           )}
         >
+          {
+            !isAdmin && !alreadyJoin && (
+              <Button secondary onClick={() => joinCourse(data.id)}>
+                Inscrever
+              </Button>
+            )
+          }
           {
             isAdmin && (
               <Fragment>
@@ -114,14 +123,21 @@ class CourseDetails extends Component {
 
         <Wrapper margin="40px auto">
           {
-            !Object.keys(courseModules).length && (
+            !alreadyJoin && (
+              <Text.Title>
+                Inscreva-se e libere as aulas deste curso!
+              </Text.Title>
+            )
+          }
+          {
+            alreadyJoin && !Object.keys(courseModules).length && (
               <Text.Title>
                 Ainda não existem aulas para este curso.
               </Text.Title>
             )
           }
           {
-            Object.keys(courseModules)
+            alreadyJoin && Object.keys(courseModules)
               .map((courseModuleName, index) => (
                 <CourseModule key={courseModuleName}>
                   <Text.Subtitle>

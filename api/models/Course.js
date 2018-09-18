@@ -37,6 +37,12 @@ const schema = new Schema({
       ref: 'Lesson',
     },
   ],
+  students: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Account',
+    },
+  ],
 });
 
 if (!schema.options.toObject) {

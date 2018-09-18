@@ -38,6 +38,12 @@ const schema = new Schema({
     type: Boolean,
     required: true,
   },
+  courses: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Course',
+    },
+  ],
 });
 
 if (!schema.options.toObject) {
