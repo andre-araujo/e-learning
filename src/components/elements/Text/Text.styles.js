@@ -3,10 +3,6 @@ import styled, { css } from 'styled-components';
 export const StyledText = tag => styled[tag]`
   font-family: Roboto;
 
-  ${({ margin }) => margin && css`
-    margin: ${margin};
-  `}
-
   ${({ type }) => {
     if (type === 'title') {
       return css`
@@ -42,4 +38,12 @@ export const StyledText = tag => styled[tag]`
 
     return null;
   }}
+
+  ${({ margin }) => margin && css`
+    margin: ${margin};
+  `}
+
+  ${({ color }) => color && css`
+    color: ${color};
+  `}
 `;

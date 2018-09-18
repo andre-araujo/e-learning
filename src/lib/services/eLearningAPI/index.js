@@ -79,8 +79,9 @@ export const createCourseService = createRequestService({
     instructorName,
     category,
     keyWords,
+    courseId,
   }) => fetchHandler(
-    '/courses', {
+    `/courses${courseId ? `/${courseId}` : ''}`, {
       method: 'POST',
       body: {
         name,

@@ -6,6 +6,8 @@ export const Container = styled(Wrapper)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
 
   ${({ minHeight }) => !minHeight && css`
     min-height: 400px;
@@ -18,7 +20,7 @@ export const Container = styled(Wrapper)`
   `}
 `;
 
-export const Title = styled.h1`
+export const Title = styled.div`
   color: white;
   font-weight: 500;
   font-size: 50px;

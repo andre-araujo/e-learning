@@ -8,7 +8,7 @@ const EditLesson = ({
   moduleName,
 }) => (
   <div>
-    <Form name="create-course" onSubmit={onSubmit}>
+    <Form name="edit-lesson" onSubmit={onSubmit}>
       <Form.Field
         name="name"
         label="Nome da aula"

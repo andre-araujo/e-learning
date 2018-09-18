@@ -8,7 +8,28 @@ function createCourseController(req, res) {
     name,
   } = req.body;
 
+  const {
+    courseId,
+  } = req.params;
+
   if (!req.user.admin) return res.status(403).send({ message: 'Must be an admin' });
+
+  if (courseId) {
+    return Course.findByIdAndUpdate(
+      courseId,
+      {
+        $set: {
+          category,
+          instructorName,
+          keyWords,
+          name,
+          updated_at: new Date(),
+        },
+      },
+    )
+      .then(course => res.send(course))
+      .catch(err => res.status(500).send({ message: err }));
+  }
 
   const course = new Course({
     category,

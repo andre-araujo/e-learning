@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { string } from 'prop-types';
 import { FaYoutube, FaEdit } from 'react-icons/fa';
+import moment from 'moment';
+
 
 import Hero from '../../modules/Hero';
 import {
   Text, Button, Wrapper, InternalLink,
 } from '../../elements';
 import { ModalProvider } from '../../modules';
+
+import EditCourse from './EditCourse';
 import EditLesson from './EditLesson';
 
 import {
@@ -53,21 +57,57 @@ class CourseDetails extends Component {
 
     return (
       <div>
-        <Hero title={data.name} minHeight="100px">
+        <Hero
+          minHeight="100px"
+          title={(
+            <Fragment>
+              <Text.Title color="white" margin="0 0 30px">
+                {data.name}
+              </Text.Title>
+              <Text.Paragraph color="white" margin="0 0 5px">
+                {'Instrutor: '}
+                {data.instructorName}
+              </Text.Paragraph>
+              <Text.Paragraph color="white">
+                {'Última atualização: '}
+                {moment(data.updated_at).format('DD/MM/YYYY')}
+              </Text.Paragraph>
+            </Fragment>
+          )}
+        >
           {
             isAdmin && (
-              <ModalProvider.Toggle
-                title="Informações da aula"
-                render={({ toggleModal }) => (
-                  <EditLesson
-                    onSubmit={formData => this.createLesson(formData).then(toggleModal)}
-                  />
-                )}
-              >
-                <Button secondary>
-                  Criar aula
-                </Button>
-              </ModalProvider.Toggle>
+              <Fragment>
+                <ModalProvider.Toggle
+                  title="Editar curso"
+                  render={({ toggleModal }) => (
+                    <EditCourse
+                      courseId={data.id}
+                      name={data.name}
+                      instructorName={data.instructorName}
+                      category={data.category}
+                      keyWords={data.keyWords}
+                      onSubmit={formData => this.createLesson(formData).then(toggleModal)}
+                    />
+                  )}
+                >
+                  <Button secondary margin="0 15px">
+                    Editar curso
+                  </Button>
+                </ModalProvider.Toggle>
+                <ModalProvider.Toggle
+                  title="Informações da aula"
+                  render={({ toggleModal }) => (
+                    <EditLesson
+                      onSubmit={formData => this.createLesson(formData).then(toggleModal)}
+                    />
+                  )}
+                >
+                  <Button secondary>
+                    Criar aula
+                  </Button>
+                </ModalProvider.Toggle>
+              </Fragment>
             )
           }
         </Hero>
@@ -76,7 +116,7 @@ class CourseDetails extends Component {
           {
             !Object.keys(courseModules).length && (
               <Text.Title>
-              Ainda não existem aulas para este curso.
+                Ainda não existem aulas para este curso.
               </Text.Title>
             )
           }

@@ -72,7 +72,7 @@ export const Content = styled.div`
   border-radius: 0 0 10px 10px;
 `;
 
-export const Button = styled.div`
+export const Button = styled.span`
   cursor: pointer;
   background: none;
   border: none;

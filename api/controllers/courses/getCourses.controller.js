@@ -1,9 +1,9 @@
 const Course = require('../../models/Course');
 
 function getCoursesController(req, res) {
-  if (req.params.id) {
+  if (req.params.courseId) {
     return Course.findOne({
-      _id: req.params.id,
+      _id: req.params.courseId,
     })
       .populate('lessons')
       .then((data) => {

@@ -10,11 +10,12 @@ function Text({
   tag,
   type,
   margin,
+  color,
   ...props
 }) {
   const Component = StyledText(tag);
   return (
-    <Component {...props} type={type} margin={margin}>
+    <Component {...props} type={type} margin={margin} color={color}>
       {children}
     </Component>
   );
@@ -29,12 +30,14 @@ Text.defaultProps = {
   children: null,
   tag: 'span',
   type: 'paragraph',
+  color: null,
 };
 
 Text.propTypes = {
   children: node,
   tag: string,
   type: string,
+  color: string,
 };
 
 export default Text;
