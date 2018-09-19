@@ -8,6 +8,7 @@ import {
   getCourseService,
   getCourseDetailService,
   joinCourseService,
+  createActivityService,
 } from '../../services/eLearningAPI';
 
 import { LOGOUT } from '../actions';
@@ -32,6 +33,7 @@ const rootReducer = (state, action) => {
     joinCourse: joinCourseService.reducer,
     courseDetail: getCourseDetailService.reducer,
     createLesson: createLessonService.reducer,
+    createActivity: createActivityService.reducer,
     globalLoading: loadingReducer,
   })(nextState, action);
 };

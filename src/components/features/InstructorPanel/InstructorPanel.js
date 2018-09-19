@@ -22,10 +22,6 @@ class InstructorPanel extends Component {
 
     return (
       <Wrapper>
-        <Text.Title margin="40px 0">
-          Painel do instrutor
-        </Text.Title>
-
         {!courseData.length && (
           <DefaultContent
             title="Ainda não existe nenhum curso criado."
@@ -37,6 +33,9 @@ class InstructorPanel extends Component {
 
         {courseData.length && (
           <Fragment>
+            <Text.Title margin="40px 0">
+              Painel do instrutor
+            </Text.Title>
             <InternalLink margin="0 0 40px" href="/instructor-panel/new-course">
               Criar novo curso
             </InternalLink>

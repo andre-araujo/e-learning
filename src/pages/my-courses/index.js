@@ -5,7 +5,7 @@ import CourseList from '../../components/features/CourseList';
 function Dashboard() {
   return (
     <Fragment>
-      <CourseList />
+      <CourseList hideUnsubscribed />
     </Fragment>
   );
 }

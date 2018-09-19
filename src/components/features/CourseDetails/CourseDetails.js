@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { string } from 'prop-types';
-import { FaYoutube, FaEdit } from 'react-icons/fa';
+import { FaYoutube, FaEdit, FaBook } from 'react-icons/fa';
 import moment from 'moment';
-
 
 import Hero from '../../modules/Hero';
 import {
@@ -12,6 +11,7 @@ import { ModalProvider } from '../../modules';
 
 import EditCourse from './EditCourse';
 import EditLesson from './EditLesson';
+import EditActivity from './EditActivity';
 
 import {
   CourseModule,
@@ -39,14 +39,14 @@ class CourseDetails extends Component {
   }
 
   render() {
-    const { courseDetail, authentication, joinCourse } = this.props;
+    const {
+      courseDetail, authentication, joinCourse, createActivity, getCourseDetail,
+    } = this.props;
     const data = courseDetail.payload || {};
 
     if (!data.id) return null;
-    const userCourses = deepSelect(authentication, 'getUser.account.courses', []);
-    const alreadyJoin = userCourses.indexOf(data.id) !== -1;
 
-    const courseModules = data.lessons.reduce((acc, courseContent) => {
+    const courseModules = data.lessons.concat(data.activities).reduce((acc, courseContent) => {
       if (!acc[courseContent.moduleName]) acc[courseContent.moduleName] = [];
 
       acc[courseContent.moduleName].push(courseContent);
@@ -55,7 +55,11 @@ class CourseDetails extends Component {
     }, {});
 
     if (!authentication.token) return null;
+
     const isAdmin = deepSelect(authentication, 'getUser.account.admin');
+    const userCourses = deepSelect(authentication, 'getUser.account.subscriptions', []);
+    const alreadyJoin = isAdmin || userCourses
+      .find(subscription => data.id === subscription.courseId);
 
     return (
       <div>
@@ -96,11 +100,11 @@ class CourseDetails extends Component {
                       instructorName={data.instructorName}
                       category={data.category}
                       keyWords={data.keyWords}
-                      onSubmit={formData => this.createLesson(formData).then(toggleModal)}
+                      onSubmit={() => getCourseDetail(data.id).then(toggleModal)}
                     />
                   )}
                 >
-                  <Button secondary margin="0 15px">
+                  <Button secondary>
                     Editar curso
                   </Button>
                 </ModalProvider.Toggle>
@@ -112,8 +116,23 @@ class CourseDetails extends Component {
                     />
                   )}
                 >
-                  <Button secondary>
+                  <Button secondary margin="0 15px">
                     Criar aula
+                  </Button>
+                </ModalProvider.Toggle>
+                <ModalProvider.Toggle
+                  title="Criar Atividade"
+                  fullScreen
+                  render={({ toggleModal }) => (
+                    <EditActivity
+                      onSubmit={formData => createActivity({ ...formData, courseId: data.id })
+                        .then(() => getCourseDetail(data.id))
+                        .then(toggleModal)}
+                    />
+                  )}
+                >
+                  <Button secondary>
+                    Criar Atividade
                   </Button>
                 </ModalProvider.Toggle>
               </Fragment>
@@ -149,53 +168,94 @@ class CourseDetails extends Component {
                   <LessonList>
                     {courseModules[courseModuleName].map(lesson => (
                       <LessonItem key={lesson.id}>
-                        <FaYoutube />
-                        <ModalProvider.Toggle
-                          title={lesson.name}
-                          render={() => (
-                            <div>
-                              <iframe
-                                style={{
-                                  width: 'calc(100vw - 80px)',
-                                  minHeight: 'calc(70vh - 80px)',
-                                }}
-                                title="lesson"
-                                id="ytplayer"
-                                type="text/html"
-                                frameBorder="0"
-                                webkitallowfullscreen
-                                mozallowfullscreen
-                                allowFullScreen
-                                src={`http://www.youtube.com/embed/${lesson.youtubeVideoId}?autoplay=1`}
-                              />
-                            </div>
-                          )}
-                        >
-                          <InternalLink>
-                            {lesson.name}
-                          </InternalLink>
-                        </ModalProvider.Toggle>
-
                         {
-                          isAdmin && (
-                            <ModalProvider.Toggle
-                              title={lesson.name}
-                              render={({ toggleModal }) => (
-                                <EditLesson
-                                  onSubmit={(formData) => {
-                                    this.createLesson({ lessonId: lesson.id, ...formData })
-                                      .then(toggleModal);
-                                  }}
-                                  name={lesson.name}
-                                  youtubeVideoId={lesson.youtubeVideoId}
-                                  moduleName={lesson.moduleName}
-                                />
-                              )}
-                            >
-                              <EditButton>
-                                <FaEdit />
-                              </EditButton>
-                            </ModalProvider.Toggle>
+                          lesson.questions && (
+                            <Fragment>
+                              <FaBook />
+                              <ModalProvider.Toggle
+                                title={lesson.name}
+                                fullScreen
+                                render={({ toggleModal }) => (
+                                  <EditActivity
+                                    name={lesson.name}
+                                    questions={lesson.questions}
+                                    moduleName={lesson.moduleName}
+                                    onSubmit={formData => createActivity({
+                                      ...formData,
+                                      courseId: data.id,
+                                      activityId: lesson.id,
+                                    })
+                                      .then(() => getCourseDetail(data.id))
+                                      .then(toggleModal)}
+                                  />
+                                )}
+                              >
+                                <InternalLink>
+                                  {`Atividade: ${lesson.name}`}
+                                </InternalLink>
+                                {
+                                  isAdmin && (
+                                    <EditButton>
+                                      <FaEdit />
+                                    </EditButton>
+                                  )
+                                }
+                              </ModalProvider.Toggle>
+                            </Fragment>
+                          )
+                        }
+                        {
+                          lesson.youtubeVideoId && (
+                            <Fragment>
+                              <FaYoutube />
+                              <ModalProvider.Toggle
+                                title={lesson.name}
+                                render={() => (
+                                  <div>
+                                    <iframe
+                                      style={{
+                                        width: 'calc(100vw - 80px)',
+                                        minHeight: 'calc(70vh - 80px)',
+                                      }}
+                                      title="lesson"
+                                      id="ytplayer"
+                                      type="text/html"
+                                      frameBorder="0"
+                                      webkitallowfullscreen
+                                      mozallowfullscreen
+                                      allowFullScreen
+                                      src={`http://www.youtube.com/embed/${lesson.youtubeVideoId}?autoplay=1`}
+                                    />
+                                  </div>
+                                )}
+                              >
+                                <InternalLink>
+                                  {lesson.name}
+                                </InternalLink>
+                              </ModalProvider.Toggle>
+                              {
+                                isAdmin && (
+                                  <ModalProvider.Toggle
+                                    title={lesson.name}
+                                    render={({ toggleModal }) => (
+                                      <EditLesson
+                                        onSubmit={(formData) => {
+                                          this.createLesson({ lessonId: lesson.id, ...formData })
+                                            .then(toggleModal);
+                                        }}
+                                        name={lesson.name}
+                                        youtubeVideoId={lesson.youtubeVideoId}
+                                        moduleName={lesson.moduleName}
+                                      />
+                                    )}
+                                  >
+                                    <EditButton>
+                                      <FaEdit />
+                                    </EditButton>
+                                  </ModalProvider.Toggle>
+                                )
+                              }
+                            </Fragment>
                           )
                         }
                       </LessonItem>

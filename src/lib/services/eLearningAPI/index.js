@@ -115,6 +115,26 @@ export const createLessonService = createRequestService({
   ),
 });
 
+export const createActivityService = createRequestService({
+  type: 'CREATE_ACTIVITY',
+  request: ({
+    courseId,
+    activityId,
+    questions,
+    moduleName,
+    name,
+  }) => fetchHandler(
+    `/courses/${courseId}/activities${activityId ? `/${activityId}` : ''}`, {
+      method: 'POST',
+      body: {
+        questions,
+        moduleName,
+        name,
+      },
+    },
+  ),
+});
+
 export const getCourseService = createRequestService({
   type: 'GET_COURSE',
   request: () => fetchHandler(
@@ -135,9 +155,12 @@ export const getCourseDetailService = createRequestService({
 
 export const joinCourseService = createRequestService({
   type: 'JOIN_COURSE',
-  request: id => fetchHandler(
-    `/courses/${id}/join`, {
-      method: 'PATCH',
+  request: courseId => fetchHandler(
+    '/account/me/courses', {
+      method: 'PUT',
+      body: {
+        courseId,
+      },
     },
   ),
 });

@@ -30,8 +30,7 @@ export const Field = styled.input`
   outline: none;
   width: 100%;
 
-  :focus ~ ${Label},
-  :valid ~ ${Label} {
+  ~ ${Label} {
     font-size: 0.8rem;
     top: 0;
     transform: translateY(-100%);

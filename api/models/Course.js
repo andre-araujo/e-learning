@@ -31,16 +31,22 @@ const schema = new Schema({
     type: Date,
     default: Date.now,
   },
+  activities: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Activity',
+    },
+  ],
   lessons: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Lesson',
     },
   ],
-  students: [
+  subscriptions: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Account',
+      ref: 'CourseSubscription',
     },
   ],
 });

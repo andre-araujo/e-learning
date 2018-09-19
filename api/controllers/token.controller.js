@@ -19,7 +19,7 @@ function tokenController(req, res) {
 
   return Account.findOneAndUpdate(
     {
-      email,
+      $or: [{ email }, { name: email }],
       password: MD5(password).toString(),
     },
     { $set: { logged_at: new Date() } },

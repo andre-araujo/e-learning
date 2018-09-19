@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const StyledText = tag => styled[tag]`
   font-family: Roboto;
+  word-break: break-all;
 
   ${({ type }) => {
     if (type === 'title') {

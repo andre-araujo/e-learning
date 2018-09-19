@@ -44,7 +44,7 @@ class AuthForm extends Component {
         {
           !login && (
             <TextInput
-              label="Nome"
+              label="Usuário"
               name="name"
               value={name}
               onChange={e => this.setState({
@@ -53,9 +53,11 @@ class AuthForm extends Component {
             />
           )
         }
+
         <TextInput
-          label="E-mail"
+          label={login ? 'E-mail ou usuário' : 'E-mail'}
           name="email"
+          type={login ? 'text' : 'email'}
           value={email}
           onChange={e => this.setState({
             email: e.target.value,

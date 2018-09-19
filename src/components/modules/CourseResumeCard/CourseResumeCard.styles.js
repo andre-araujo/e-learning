@@ -6,6 +6,7 @@ export const Container = styled.section`
   display: flex;
   position: relative;
   cursor: pointer;
+  align-items: center;
 
   &:hover:after {
     content: '';
@@ -34,8 +35,13 @@ export const Content = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 export const Description = styled.strong`
   flex: 1;
+`;
+
+export const Joined = styled.div`
+  /* flex: 1; */
 `;

@@ -1,37 +1,5 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transform: translate(0,0);
-  display: none;
-
-  ${({ isOpen }) => isOpen && css`
-    display: block;
-  `}
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    padding: 0;
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    border: 0;
-  }
-`;
-
 export const Outer = styled.section`
   position: relative;
   transform: translate(0,0);
@@ -61,6 +29,7 @@ export const Header = styled.header`
   border-radius: 10px 10px 0 0;
   position: relative;
   font-size: 20px;
+  flex: 0 0 auto;
 `;
 
 export const Content = styled.div`
@@ -98,4 +67,60 @@ export const Children = styled.div`
   ${({ isOpen }) => isOpen && css`
     filter: blur(2px);
   `}
+`;
+
+export const Container = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform: translate(0,0);
+  display: none;
+
+  ${({ isOpen }) => isOpen && css`
+    display: block;
+  `}
+
+  ${({ fullScreen }) => fullScreen && css`
+    ${Outer} {
+      padding: 0;
+      height: 100vh;
+    }
+
+    ${Inner} {
+      padding: 0;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    ${Content} {
+      flex: 1;
+    }
+
+    ${Content},
+    ${Header} {
+      border-radius: 0;
+    }
+  `}
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    padding: 0;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    border: 0;
+  }
 `;

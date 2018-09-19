@@ -1,5 +1,5 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { string, bool } from 'prop-types';
 import Link from 'next/link';
 import moment from 'moment';
 
@@ -8,11 +8,13 @@ import {
   Thumbnail,
   Content,
   Description,
+  Joined,
 } from './CourseResumeCard.styles';
 import Text from '../../elements/Text';
 
 function CourseResumeCard({
   id,
+  joined,
   name,
   instructorName,
   category,
@@ -68,6 +70,15 @@ function CourseResumeCard({
             }
           </Text.Small>
         </Content>
+        {
+          joined && (
+            <Joined>
+              <Text.Small>
+                Subscrito
+              </Text.Small>
+            </Joined>
+          )
+        }
       </Container>
     </Link>
   );
@@ -82,6 +93,7 @@ CourseResumeCard.defaultProps = {
   updated_at: null,
   created_at: null,
   thumbnail: null,
+  joined: null,
 };
 
 CourseResumeCard.propTypes = {
@@ -93,6 +105,7 @@ CourseResumeCard.propTypes = {
   updated_at: string,
   created_at: string,
   thumbnail: string,
+  joined: bool,
 };
 
 export default CourseResumeCard;

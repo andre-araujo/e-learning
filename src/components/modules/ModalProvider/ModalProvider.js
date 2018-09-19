@@ -18,7 +18,7 @@ const ModalContext = createContext();
 
 class ModalProvider extends Component {
   static Toggle = ({
-    children, className, render, title,
+    children, className, render, title, fullScreen,
   }) => (
     <ModalContext.Consumer>
       {data => (
@@ -29,6 +29,7 @@ class ModalProvider extends Component {
             data.toggleModal();
             data.setRenderComponent(render);
             data.setTitle(title);
+            data.setFullScreen(fullScreen);
           }}
           className={className}
         >
@@ -42,6 +43,7 @@ class ModalProvider extends Component {
     isOpen: false,
     render: null,
     title: '',
+    fullScreen: false,
   };
 
   componentDidMount() {
@@ -53,6 +55,7 @@ class ModalProvider extends Component {
           isOpen: false,
           render: null,
           title: '',
+          fullScreen: false,
         });
       }
     };
@@ -70,14 +73,22 @@ class ModalProvider extends Component {
     this.setState({ title });
   }
 
+  setFullScreen = (fullScreen) => {
+    this.setState({ fullScreen });
+  }
+
   toggleModal = () => {
     this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
   };
 
   render() {
-    const { toggleModal, setRenderComponent, setTitle } = this;
+    const {
+      toggleModal, setRenderComponent, setTitle, setFullScreen,
+    } = this;
     const { children } = this.props;
-    const { isOpen, render, title } = this.state;
+    const {
+      isOpen, render, title, fullScreen,
+    } = this.state;
 
     return (
       <ModalContext.Provider value={
@@ -86,6 +97,7 @@ class ModalProvider extends Component {
           toggleModal,
           setRenderComponent,
           setTitle,
+          setFullScreen,
         }
       }
       >
@@ -93,7 +105,7 @@ class ModalProvider extends Component {
           {children}
         </Children>
         {isOpen && (
-          <Container aria-label="oppened modal" isOpen={isOpen}>
+          <Container aria-label="oppened modal" isOpen={isOpen} fullScreen={fullScreen}>
             <Outer>
               <Inner>
                 <Header>

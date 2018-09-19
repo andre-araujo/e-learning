@@ -10,17 +10,22 @@ app.use(passport.initialize());
 
 app.post('/api/account/singup', require('../controllers/singup.controller'));
 app.post('/api/account/token', require('../controllers/token.controller'));
-app.get('/api/account/me', authentication, require('../controllers/account.controller'));
+
+app.get('/api/account/me', authentication, require('../controllers/account/account.controller'));
+app.put('/api/account/me/courses', authentication, require('../controllers/account/subscribeCourse.controller'));
+app.get('/api/account/me/courses', authentication, require('../controllers/account/getSubscriptions.controller'));
 
 app.post('/api/courses', authentication, require('../controllers/courses/createCourse.controller'));
 app.post('/api/courses/:courseId', authentication, require('../controllers/courses/createCourse.controller'));
-app.patch('/api/courses/:courseId/join', authentication, require('../controllers/courses/joinCourse.controller'));
 
 app.get('/api/courses', authentication, require('../controllers/courses/getCourses.controller'));
 app.get('/api/courses/:courseId', authentication, require('../controllers/courses/getCourses.controller'));
 
 app.post('/api/courses/:courseId/lessons', authentication, require('../controllers/courses/createLesson.controller'));
 app.post('/api/courses/:courseId/lessons/:lessonId', authentication, require('../controllers/courses/createLesson.controller'));
+
+app.post('/api/courses/:courseId/activities', authentication, require('../controllers/courses/createActivity.controller'));
+app.post('/api/courses/:courseId/activities/:activityId', authentication, require('../controllers/courses/createActivity.controller'));
 
 app.all('*', (req, res) => {
   res.status(404).send({

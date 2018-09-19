@@ -5,6 +5,7 @@ export const StyledAnchor = styled.a`
   text-decoration: underline;
   user-select: none;
   display: inline-block;
+  word-break: break-all;
 
   :hover {
     color: orange;

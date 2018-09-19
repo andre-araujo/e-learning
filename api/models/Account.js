@@ -38,10 +38,10 @@ const schema = new Schema({
     type: Boolean,
     required: true,
   },
-  courses: [
+  subscriptions: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Course',
+      ref: 'CourseSubscription',
     },
   ],
 });

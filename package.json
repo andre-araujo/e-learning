@@ -50,7 +50,8 @@
     "redux-loading-middleware": "^1.0.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
-    "styled-components": "~3.3.3"
+    "styled-components": "~3.3.3",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "babel-eslint": "~8.2.6",

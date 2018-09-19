@@ -19,16 +19,20 @@ function TextInput({
           required
           name={inputProps.name}
         />
-        <Label htmlFor={inputProps.name}>
-          {label}
-        </Label>
+        {
+          label && (
+            <Label htmlFor={inputProps.name}>
+              {label}
+            </Label>
+          )
+        }
       </Content>
     </Wrapper>
   );
 }
 
 TextInput.defaultProps = {
-  label: 'label',
+  label: null,
 };
 
 TextInput.propTypes = {

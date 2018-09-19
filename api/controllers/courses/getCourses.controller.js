@@ -6,6 +6,7 @@ function getCoursesController(req, res) {
       _id: req.params.courseId,
     })
       .populate('lessons')
+      .populate('activities')
       .then((data) => {
         res.send(data);
       })
