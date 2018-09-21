@@ -11,13 +11,16 @@ const EditCourse = ({
   category,
   keyWords,
   courseId,
+  getCourseDetail,
   requestCreateCourse,
 }) => (
   <div>
     <Form
       name="edit-course"
       onSubmit={(data) => {
-        requestCreateCourse({ ...data, courseId }).then(onSubmit);
+        requestCreateCourse({ ...data, courseId })
+          .then(() => getCourseDetail(courseId))
+          .then(onSubmit);
       }}
     >
       <Form.Field
@@ -53,6 +56,7 @@ const EditCourse = ({
 
 const mapDispatchToProps = dispatch => ({
   requestCreateCourse: data => dispatch(actions.requestCreateCourse(data)),
+  getCourseDetail: id => dispatch(actions.getCourseDetail(id)),
 });
 
 export default connect(null, mapDispatchToProps)(EditCourse);

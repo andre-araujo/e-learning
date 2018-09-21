@@ -13,11 +13,9 @@ const schema = new Schema({
   },
   questions: [
     {
-      _id: false,
       id: Schema.Types.ObjectId,
       value: String,
       answers: [{
-        _id: false,
         value: String,
         correct: Boolean,
       }],

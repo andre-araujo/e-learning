@@ -72,6 +72,35 @@ export function getUser() {
     .then(responseParser);
 }
 
+export const joinCourseService = createRequestService({
+  type: 'JOIN_COURSE',
+  request: courseId => fetchHandler(
+    '/account/me/courses', {
+      method: 'PUT',
+      body: {
+        courseId,
+      },
+    },
+  ),
+});
+
+
+export const submitUserActivityService = createRequestService({
+  type: 'SUBMIT_USER_ACTIVITY',
+  request: ({
+    courseId,
+    activityId,
+    questions,
+  }) => fetchHandler(
+    `/account/me/courses/${courseId}/activities${activityId ? `/${activityId}` : ''}`, {
+      method: 'POST',
+      body: {
+        questions,
+      },
+    },
+  ),
+});
+
 export const createCourseService = createRequestService({
   type: 'CREATE_COURSE',
   request: ({
@@ -149,18 +178,6 @@ export const getCourseDetailService = createRequestService({
   request: id => fetchHandler(
     `/courses/${id}`, {
       method: 'GET',
-    },
-  ),
-});
-
-export const joinCourseService = createRequestService({
-  type: 'JOIN_COURSE',
-  request: courseId => fetchHandler(
-    '/account/me/courses', {
-      method: 'PUT',
-      body: {
-        courseId,
-      },
     },
   ),
 });

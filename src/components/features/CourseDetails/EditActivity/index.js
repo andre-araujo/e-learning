@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { FaPlus } from 'react-icons/fa';
 import uuidv1 from 'uuid/v1';
 
+import { actions } from '../../../../lib';
 import { TextInput, Button, Text } from '../../../elements';
 import { deepSelect } from '../../../../lib/utils';
 
@@ -13,11 +14,49 @@ class EditActivity extends Component {
     questions: this.props.questions || [], // eslint-disable-line
   }
 
-  onSubmit = (e) => {
-    const { onSubmit } = this.props;
+  onSubmit = async (e) => {
     e.preventDefault();
+    const formData = { ...this.state };
 
-    if (onSubmit) onSubmit(this.state);
+    formData.questions = formData.questions.map(question => ({
+      answers: question.answers.map(answer => ({
+        value: answer.value,
+        correct: answer.correct,
+      })),
+      value: question.value,
+    }));
+
+    const {
+      onSubmit,
+      createActivity,
+      getCourseDetail,
+      authentication,
+      submitUserActivity,
+      courseId,
+      activityId,
+    } = this.props;
+
+    const isAdmin = deepSelect(authentication, 'getUser.account.admin');
+
+    const requestFunction = isAdmin ? createActivity : submitUserActivity;
+
+    const resp = await requestFunction({
+      ...formData,
+      courseId,
+      activityId,
+    });
+
+    if (resp.status >= 400) return;
+
+    if (!isAdmin) {
+      const { correctAnswers } = resp.payload;
+
+      alert(`Você acertou ${correctAnswers === 1 ? `${correctAnswers} questão` : `${correctAnswers} questões`}`); // eslint-disable-line
+    }
+
+    await getCourseDetail(courseId);
+
+    if (onSubmit) onSubmit();
   }
 
   handleQuestionInput = (index, value) => {
@@ -68,7 +107,10 @@ class EditActivity extends Component {
 
   render() {
     const { questions, moduleName, name } = this.state;
-    const { authentication } = this.props;
+    const {
+      authentication,
+    } = this.props;
+
     const isAdmin = deepSelect(authentication, 'getUser.account.admin');
 
     return (
@@ -101,7 +143,10 @@ class EditActivity extends Component {
           )
         }
 
-        <form name="edit-lesson" onSubmit={this.onSubmit}>
+        <form
+          name="edit-lesson"
+          onSubmit={this.onSubmit}
+        >
           {questions.map((question, index) => (
             <div key={question.id}>
               <hr />
@@ -173,4 +218,10 @@ const mapStateToProps = ({ authentication }) => ({
   authentication,
 });
 
-export default connect(mapStateToProps)(EditActivity);
+const mapDispatchToProps = dispatch => ({
+  createActivity: data => dispatch(actions.createActivity(data)),
+  submitUserActivity: data => dispatch(actions.submitUserActivity(data)),
+  getCourseDetail: id => dispatch(actions.getCourseDetail(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditActivity);

@@ -9,6 +9,15 @@ const schema = new Schema({
       ref: 'Lesson',
     },
   ],
+  finishedActivities: [
+    {
+      activityId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Activity',
+      },
+      correctAnswers: Number,
+    },
+  ],
   accountId: {
     type: Schema.Types.ObjectId,
     ref: 'Account',
