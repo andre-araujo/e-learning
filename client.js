@@ -15,7 +15,6 @@ app.prepare()
     const server = express();
 
     server.get('*', (req, res) => handle(req, res));
-
     server.listen(port, (err) => {
       if (err) throw err;
       process.stdout.write(`> Ready on http://localhost:${port}\n`);
