@@ -14,7 +14,6 @@
   "license": "MIT",
   "scripts": {
     "build": "next build src",
-    "build:prod": "cross-env NODE_ENV=production next build src",
     "export": "npm run build && next export src -o dist",
     "commit": "git-cz",
     "dev": "node client.js",
@@ -22,7 +21,7 @@
     "lint": "eslint ./",
     "api": "node ./api/index.js",
     "api:watch": "nodemon ./api/index.js",
-    "start": "npm run build && cross-env NODE_ENV=production node client.js",
+    "start": "npm run export && yarn api",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 const {
   MONGO_URL,
   APP_PORT,
@@ -8,8 +9,10 @@ const {
 
 global.app = express();
 
+app.use('/', express.static(path.resolve(__dirname, '..', 'dist')));
+
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', `http://localhost:${parseInt(process.env.PORT, 10) || 3000}`);
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', '*');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, authorization');
   res.setHeader('Access-Control-Allow-Credentials', true);
