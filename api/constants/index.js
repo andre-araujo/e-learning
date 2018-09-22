@@ -1,6 +1,6 @@
 module.exports = {
   MONGO_URL: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/elearning',
-  APP_PORT: parseInt(process.env.PORT, 10) || 3001,
+  APP_PORT: 3001,
   SECRET: 'somesecretkey',
   TOKEN_EXPIRATION_TIME: '30d',
   SUCCESS: 'ok',
