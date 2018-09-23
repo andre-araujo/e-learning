@@ -49,6 +49,12 @@ const schema = new Schema({
       ref: 'CourseSubscription',
     },
   ],
+  files: [
+    {
+      url: String,
+      name: String,
+    },
+  ],
 });
 
 if (!schema.options.toObject) {

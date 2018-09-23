@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Flex, Box } from 'grid-styled';
 import { string } from 'prop-types';
 import moment from 'moment';
 
@@ -12,6 +13,7 @@ import EditCourse from './EditCourse';
 import EditLesson from './EditLesson';
 import EditActivity from './EditActivity';
 import CourseModules from './CourseModules';
+import CourseFiles from '../CourseFiles';
 
 import { deepSelect } from '../../../lib/utils';
 
@@ -126,13 +128,24 @@ class CourseDetails extends Component {
         </Hero>
 
         <Wrapper margin="40px auto">
-          <CourseModules
-            lessons={data.lessons}
-            activities={data.activities}
-            courseId={data.id}
-            alreadyJoin={alreadyJoin}
-            isAdmin={isAdmin}
-          />
+          <Flex flexDirection={['column', 'row']}>
+            <Box width={[1, 3 / 4]} mr={[0, 4]}>
+              <CourseModules
+                lessons={data.lessons}
+                activities={data.activities}
+                courseId={data.id}
+                alreadyJoin={alreadyJoin}
+                isAdmin={isAdmin}
+              />
+            </Box>
+            <Box width={[1, 1 / 4]}>
+              <CourseFiles
+                courseId={data.id}
+                alreadyJoin={alreadyJoin}
+                isAdmin={isAdmin}
+              />
+            </Box>
+          </Flex>
         </Wrapper>
       </div>
     );

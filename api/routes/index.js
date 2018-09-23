@@ -1,4 +1,7 @@
+const bodyParser = require('body-parser');
 const passport = require('passport');
+const fileUpload = require('express-fileupload');
+
 const { NOT_FOUND } = require('../constants');
 
 const jwtMiddleware = require('../middlewares/passportJWT.middleware');
@@ -7,6 +10,15 @@ const authentication = require('../middlewares/authentication.middleware');
 passport.use(jwtMiddleware);
 
 app.use(passport.initialize());
+
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.post('/api/courses/:courseId/files', authentication, require('../controllers/courses/courseFiles.controller').uploadFileController);
 
 app.post('/api/account/singup', require('../controllers/singup.controller'));
 app.post('/api/account/token', require('../controllers/token.controller'));

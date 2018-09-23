@@ -9,10 +9,11 @@ import {
 function Button({
   children,
   secondary,
+  disabled,
   ...props
 }) {
   return (
-    <StyledButton secondary={secondary} {...props}>
+    <StyledButton disabled={disabled} secondary={secondary} {...props}>
       <Text>
         {children}
       </Text>
@@ -23,6 +24,7 @@ function Button({
 Button.defaultProps = {
   children: '',
   secondary: false,
+  disabled: false,
   full: false,
   gap: 0,
 };
@@ -30,6 +32,7 @@ Button.defaultProps = {
 Button.propTypes = {
   children: node,
   secondary: bool,
+  disabled: bool,
   full: bool,
   gap: number,
 };

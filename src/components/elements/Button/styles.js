@@ -16,6 +16,12 @@ export const StyledButton = styled.button`
     .2s background,
     .2s transform;
 
+  &:disabled,
+  &:disabled:hover {
+    opacity: 0.4;
+    cursor: default;
+  }
+
   ${({ full }) => full && css`
     width: 100%;
   `}

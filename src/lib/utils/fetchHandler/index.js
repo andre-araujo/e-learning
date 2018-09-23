@@ -10,16 +10,24 @@ export const getOrigin = req => (req ? `${req.protocol}://${req.get('Host')}` : 
 const fetchHandler = (url, options = {}) => {
   const { headers, body, ...otherOptions } = options;
 
+  const isFormData = body instanceof FormData;
+
+  const content = {};
+
+  if (!isFormData) {
+    content['Content-Type'] = 'application/json';
+  }
+
   return unfetch(
     `http://localhost:3001/api${url}`,
     {
       ...otherOptions,
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+        ...content,
         ...headers,
       },
-      body: JSON.stringify(body),
+      body: body instanceof FormData ? body : JSON.stringify(body),
     },
   );
 };

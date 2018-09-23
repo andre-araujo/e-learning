@@ -201,3 +201,21 @@ export const getCourseDetailService = createRequestService({
     },
   ),
 });
+
+export const fileUploadService = createRequestService({
+  type: 'GET_COURSE_DETAIL',
+  request: ({
+    courseId,
+    file,
+  }) => {
+    const formData = new FormData();
+    formData.append('courseFile', file);
+
+    return fetchHandler(
+      `/courses/${courseId}/files`, {
+        method: 'POST',
+        body: formData,
+      },
+    );
+  },
+});

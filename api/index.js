@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const {
@@ -9,6 +8,7 @@ const {
 
 global.app = express();
 
+app.use('/uploads', express.static(path.resolve(__dirname, 'uploads')));
 app.use('/', express.static(path.resolve(__dirname, '..', 'dist')));
 
 app.use((req, res, next) => {
@@ -23,9 +23,6 @@ app.use((req, res, next) => {
 
   return next();
 });
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 

@@ -22,7 +22,8 @@
     "jest": true,
     "beforeEach": true,
     "window": true,
-    "app": true
+    "app": true,
+    "FormData": true
   },
   "rules": {
     "import/prefer-default-export": 0,
