@@ -7,6 +7,7 @@ import {
   createCourseService,
   getCourseService,
   getCourseDetailService,
+  getUserSubscriptionService,
   joinCourseService,
   createActivityService,
 } from '../../services/eLearningAPI';
@@ -28,6 +29,7 @@ const rootReducer = (state, action) => {
 
   return combineReducers({
     authentication,
+    userSubscription: getUserSubscriptionService.reducer,
     createCourse: createCourseService.reducer,
     courses: getCourseService.reducer,
     joinCourse: joinCourseService.reducer,

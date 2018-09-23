@@ -58,7 +58,7 @@ async function userActivities(req, res) {
 
       subscription.save();
 
-      return res.send({ correctAnswers });
+      return res.send(subscription);
     } catch (err) {
       res.status(500).send({ message: err });
     }

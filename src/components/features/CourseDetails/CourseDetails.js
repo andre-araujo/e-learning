@@ -17,9 +17,10 @@ import { deepSelect } from '../../../lib/utils';
 
 class CourseDetails extends Component {
   componentDidMount() {
-    const { id, getCourseDetail } = this.props;
+    const { id, getCourseDetail, getUserSubscription } = this.props;
 
     getCourseDetail(id);
+    getUserSubscription(id);
   }
 
   createLesson = async (formData) => {

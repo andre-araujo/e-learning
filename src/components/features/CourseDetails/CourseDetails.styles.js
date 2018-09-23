@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const CourseModule = styled.section`
   padding: 15px 15px 0;
@@ -26,7 +26,7 @@ export const LessonItem = styled.li`
 `;
 
 
-export const EditButton = styled.button`
+export const RightIcon = styled.i`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -35,7 +35,11 @@ export const EditButton = styled.button`
   outline: none;
   font-size: 18px;
 
-  :hover {
+  /* :hover {
     color: orange;
-  }
+  } */
+
+  ${({ color }) => color && css`
+    color: ${color};
+  `}
 `;

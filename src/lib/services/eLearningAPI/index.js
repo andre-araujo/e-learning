@@ -84,9 +84,17 @@ export const joinCourseService = createRequestService({
   ),
 });
 
+export const getUserSubscriptionService = createRequestService({
+  type: 'USER_SUBSCRIPTION',
+  request: courseId => fetchHandler(
+    `/account/me/courses${courseId ? `/${courseId}` : ''}`, {
+      method: 'GET',
+    },
+  ),
+});
 
 export const submitUserActivityService = createRequestService({
-  type: 'SUBMIT_USER_ACTIVITY',
+  type: 'USER_SUBSCRIPTION',
   request: ({
     courseId,
     activityId,
@@ -97,6 +105,18 @@ export const submitUserActivityService = createRequestService({
       body: {
         questions,
       },
+    },
+  ),
+});
+
+export const submitUserLessonService = createRequestService({
+  type: 'USER_SUBSCRIPTION',
+  request: ({
+    courseId,
+    lessonId,
+  }) => fetchHandler(
+    `/account/me/courses/${courseId}/lessons${lessonId ? `/${lessonId}` : ''}`, {
+      method: 'PATCH',
     },
   ),
 });

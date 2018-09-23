@@ -6,11 +6,15 @@ import {
   getCourseService,
   getCourseDetailService,
   joinCourseService,
+  submitUserLessonService,
+  getUserSubscriptionService,
 } from '../../services/eLearningAPI';
 
 
 export const createActivity = createActivityService.action;
 export const submitUserActivity = submitUserActivityService.action;
+export const submitUserLesson = submitUserLessonService.action;
+export const getUserSubscription = getUserSubscriptionService.action;
 
 export const requestCreateCourse = createCourseService.action;
 export const getCourses = getCourseService.action;

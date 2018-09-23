@@ -48,12 +48,6 @@ class EditActivity extends Component {
 
     if (resp.status >= 400) return;
 
-    if (!isAdmin) {
-      const { correctAnswers } = resp.payload;
-
-      alert(`Você acertou ${correctAnswers === 1 ? `${correctAnswers} questão` : `${correctAnswers} questões`}`); // eslint-disable-line
-    }
-
     await getCourseDetail(courseId);
 
     if (onSubmit) onSubmit();

@@ -5,8 +5,10 @@ const { Schema } = mongoose;
 const schema = new Schema({
   finishedLessons: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Lesson',
+      lessonId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Lesson',
+      },
     },
   ],
   finishedActivities: [

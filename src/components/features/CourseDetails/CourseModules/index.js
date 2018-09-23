@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react';
-import { FaYoutube, FaEdit, FaBook } from 'react-icons/fa';
+import {
+  FaYoutube, FaEdit, FaBook, FaCheck,
+} from 'react-icons/fa';
+import { connect } from 'react-redux';
+
+import { actions } from '../../../../lib';
+
 import {
   Text, InternalLink,
 } from '../../../elements';
@@ -9,11 +15,27 @@ import {
   CourseModule,
   LessonList,
   LessonItem,
-  EditButton,
+  RightIcon,
 } from '../CourseDetails.styles';
 
 import EditLesson from '../EditLesson';
 import EditActivity from '../EditActivity';
+import { deepSelect } from '../../../../lib/utils';
+
+const getUserGrade = (
+  userActivities = [],
+  activity = {
+    questions: [],
+  },
+) => {
+  const userActivityData = userActivities
+    .find(userActivity => userActivity.activityId === activity.id);
+
+  if (!userActivityData) return '--';
+
+  const percentage = userActivityData.correctAnswers / activity.questions.length * 100;
+  return `Acertos: ${parseInt(percentage, 10)}%`;
+};
 
 const CourseModulesList = ({
   courseId,
@@ -21,7 +43,12 @@ const CourseModulesList = ({
   isAdmin,
   lessons,
   activities,
+  userSubscription,
+  submitUserLesson,
 }) => {
+  const userLessons = deepSelect(userSubscription, 'payload.finishedLessons', []);
+  const userActivities = deepSelect(userSubscription, 'payload.finishedActivities', []);
+
   const courseModules = lessons.concat(activities).reduce((acc, courseContent) => {
     if (!acc[courseContent.moduleName]) acc[courseContent.moduleName] = [];
 
@@ -82,12 +109,21 @@ const CourseModulesList = ({
                             </InternalLink>
                             {
                               isAdmin && (
-                                <EditButton>
+                                <RightIcon>
                                   <FaEdit />
-                                </EditButton>
+                                </RightIcon>
                               )
                             }
                           </ModalProvider.Toggle>
+                          {
+                            !isAdmin && (
+                              <RightIcon>
+                                <b>
+                                  {getUserGrade(userActivities, lesson)}
+                                </b>
+                              </RightIcon>
+                            )
+                          }
                         </Fragment>
                       )
                     }
@@ -116,10 +152,24 @@ const CourseModulesList = ({
                               </div>
                             )}
                           >
-                            <InternalLink>
+                            <InternalLink
+                              onClick={() => submitUserLesson({
+                                lessonId: lesson.id,
+                                courseId,
+                              })}
+                            >
                               {lesson.name}
                             </InternalLink>
                           </ModalProvider.Toggle>
+                          {
+                            !isAdmin
+                            && userLessons.find(userLesson => userLesson.lessonId === lesson.id)
+                            && (
+                              <RightIcon color="lawngreen">
+                                <FaCheck />
+                              </RightIcon>
+                            )
+                          }
                           {
                             isAdmin && (
                               <ModalProvider.Toggle
@@ -135,9 +185,9 @@ const CourseModulesList = ({
                                   />
                                 )}
                               >
-                                <EditButton>
+                                <RightIcon>
                                   <FaEdit />
-                                </EditButton>
+                                </RightIcon>
                               </ModalProvider.Toggle>
                             )
                           }
@@ -159,4 +209,13 @@ CourseModulesList.defaultProps = {
   activities: [],
 };
 
-export default CourseModulesList;
+
+const mapStateToProps = ({ userSubscription }) => ({
+  userSubscription,
+});
+
+const mapDispatchToProps = dispatch => ({
+  submitUserLesson: data => dispatch(actions.submitUserLesson(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseModulesList);

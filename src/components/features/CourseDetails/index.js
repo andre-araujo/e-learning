@@ -10,6 +10,7 @@ const mapStateToProps = ({ courseDetail, createLesson, authentication }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getUserSubscription: data => dispatch(actions.getUserSubscription(data)),
   getCourseDetail: id => dispatch(actions.getCourseDetail(id)),
   joinCourse: (courseId) => {
     dispatch(actions.joinCourse(courseId))
