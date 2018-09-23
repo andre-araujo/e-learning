@@ -9,8 +9,10 @@ import {
   submitUserLessonService,
   getUserSubscriptionService,
   fileUploadService,
+  getUsersReportService,
 } from '../../services/eLearningAPI';
 
+export const getUsersReport = getUsersReportService.action;
 export const createLesson = createLessonService.action;
 export const createActivity = createActivityService.action;
 export const submitUserActivity = submitUserActivityService.action;

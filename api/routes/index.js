@@ -29,6 +29,8 @@ app.get('/api/account/me/courses/:courseId', authentication, require('../control
 app.post('/api/account/me/courses/:courseId/activities/:activityId', authentication, require('../controllers/account/userActivities.controller'));
 app.patch('/api/account/me/courses/:courseId/lessons/:lessonId', authentication, require('../controllers/account/userLessons.controller'));
 
+app.get('/api/subscriptions', authentication, require('../controllers/account/subscriptions.controller'));
+
 app.post('/api/courses', authentication, require('../controllers/courses/createCourse.controller'));
 app.post('/api/courses/:courseId', authentication, require('../controllers/courses/createCourse.controller'));
 

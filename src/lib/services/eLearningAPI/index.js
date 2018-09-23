@@ -72,6 +72,15 @@ export function getUser() {
     .then(responseParser);
 }
 
+export const getUsersReportService = createRequestService({
+  type: 'USERS_REPORT',
+  request: () => fetchHandler(
+    '/subscriptions', {
+      method: 'GET',
+    },
+  ),
+});
+
 export const joinCourseService = createRequestService({
   type: 'JOIN_COURSE',
   request: courseId => fetchHandler(

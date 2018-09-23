@@ -24,6 +24,9 @@ function UserMenu({
             <InternalLink gap={30} href="/instructor-panel">
               Painel do Instrutor
             </InternalLink>
+            <InternalLink gap={30} href="/instructor-panel/users-report">
+              Relatório de usuários
+            </InternalLink>
           </Fragment>
         )
       }
