@@ -74,7 +74,7 @@ function CourseResumeCard({
           joined && (
             <Joined>
               <Text.Small>
-                Subscrito
+                Inscrito
               </Text.Small>
             </Joined>
           )
