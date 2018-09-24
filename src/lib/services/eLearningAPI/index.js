@@ -228,3 +228,41 @@ export const fileUploadService = createRequestService({
     );
   },
 });
+
+
+export const getCertificationService = createRequestService({
+  type: 'GET_CERTIFICATION',
+  request: (id) => {
+    async function downloadPDF(resp) {
+      if (resp.status !== 200) return;
+      if (/json/g.test(resp.headers.get('Content-Type'))) {
+        alert('Resultados insuficientes para gerar o certificado!'); // eslint-disable-line
+        return;
+      }
+
+      const blob = await resp.blob();
+      const newBlob = new Blob([blob], { type: 'application/pdf' });
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob);
+        return;
+      }
+
+      const data = window.URL.createObjectURL(newBlob);
+      const link = document.createElement('a');
+      link.href = data;
+      link.download = 'file.pdf';
+      link.click();
+      setTimeout(() => {
+        window.URL.revokeObjectURL(data);
+      },
+      100);
+    }
+    fetchHandler(
+      `/courses/${id}/certification`, {
+        method: 'GET',
+      },
+    )
+      .then(downloadPDF);
+  },
+});

@@ -18,8 +18,6 @@ app.use(fileUpload({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post('/api/courses/:courseId/files', authentication, require('../controllers/courses/courseFiles.controller').uploadFileController);
-
 app.post('/api/account/singup', require('../controllers/singup.controller'));
 app.post('/api/account/token', require('../controllers/token.controller'));
 
@@ -28,6 +26,8 @@ app.put('/api/account/me/courses', authentication, require('../controllers/accou
 app.get('/api/account/me/courses/:courseId', authentication, require('../controllers/account/getSubscriptions.controller'));
 app.post('/api/account/me/courses/:courseId/activities/:activityId', authentication, require('../controllers/account/userActivities.controller'));
 app.patch('/api/account/me/courses/:courseId/lessons/:lessonId', authentication, require('../controllers/account/userLessons.controller'));
+
+app.get('/api/courses/:courseId/certification', authentication, require('../controllers/account/certification.controller'));
 
 app.get('/api/subscriptions', authentication, require('../controllers/account/subscriptions.controller'));
 
@@ -42,6 +42,8 @@ app.post('/api/courses/:courseId/lessons/:lessonId', authentication, require('..
 
 app.post('/api/courses/:courseId/activities', authentication, require('../controllers/courses/createActivity.controller'));
 app.post('/api/courses/:courseId/activities/:activityId', authentication, require('../controllers/courses/createActivity.controller'));
+
+app.post('/api/courses/:courseId/files', authentication, require('../controllers/courses/courseFiles.controller').uploadFileController);
 
 app.all('*', (req, res) => {
   res.status(404).send({

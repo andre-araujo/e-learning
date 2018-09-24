@@ -14,6 +14,7 @@ import EditLesson from './EditLesson';
 import EditActivity from './EditActivity';
 import CourseModules from './CourseModules';
 import CourseFiles from '../CourseFiles';
+import Certificate from '../Certificate';
 
 import { deepSelect } from '../../../lib/utils';
 
@@ -138,13 +139,22 @@ class CourseDetails extends Component {
                 isAdmin={isAdmin}
               />
             </Box>
-            <Box width={[1, 1 / 4]}>
-              <CourseFiles
-                courseId={data.id}
-                alreadyJoin={alreadyJoin}
-                isAdmin={isAdmin}
-              />
-            </Box>
+            {
+              (isAdmin || alreadyJoin) && (
+                <Box width={[1, 1 / 4]}>
+                  <CourseFiles
+                    courseId={data.id}
+                    alreadyJoin={alreadyJoin}
+                    isAdmin={isAdmin}
+                  />
+                  <Certificate
+                    courseId={data.id}
+                    alreadyJoin={alreadyJoin}
+                    isAdmin={isAdmin}
+                  />
+                </Box>
+              )
+            }
           </Flex>
         </Wrapper>
       </div>

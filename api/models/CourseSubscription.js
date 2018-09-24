@@ -28,6 +28,7 @@ const schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Course',
   },
+  certificate: Boolean,
 });
 
 if (!schema.options.toObject) {

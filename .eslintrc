@@ -23,7 +23,8 @@
     "beforeEach": true,
     "window": true,
     "app": true,
-    "FormData": true
+    "FormData": true,
+    "Blob": true
   },
   "rules": {
     "import/prefer-default-export": 0,

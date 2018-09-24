@@ -32,6 +32,7 @@ mongoose.connect(
 );
 
 require('./routes');
+require('./generateMass');
 
 app.listen(APP_PORT, () => {
   process.stdout.write(`> Ready on http://localhost:${APP_PORT}\n`);

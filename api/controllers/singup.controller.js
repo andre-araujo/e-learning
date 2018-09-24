@@ -9,31 +9,6 @@ const {
 
 const Account = require('../models/Account');
 
-function createAdmin() {
-  const adminData = {
-    name: 'admin',
-    email: 'admin@admin.com',
-    password: MD5('admin').toString(),
-    updated_at: new Date(),
-    logged_at: new Date(),
-    admin: true,
-  };
-
-  Account.findOneAndUpdate(
-    { email: adminData.email },
-    {
-      ...adminData,
-      $setOnInsert: { created_at: new Date() },
-    },
-    { new: true, upsert: true },
-    (err, admin) => {
-      console.info('Admin created!', admin);
-    },
-  );
-}
-
-createAdmin();
-
 function singup(req, res) {
   const {
     phone,

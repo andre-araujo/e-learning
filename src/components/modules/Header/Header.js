@@ -29,7 +29,7 @@ function Header({
 }
 
 Header.defaultProps = {
-  title: 'E-learning',
+  title: 'LearningShelf',
   addOn: null,
 };
 
