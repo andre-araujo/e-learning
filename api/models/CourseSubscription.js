@@ -29,6 +29,7 @@ const schema = new Schema({
     ref: 'Course',
   },
   certificate: Boolean,
+  rating: Number,
 });
 
 if (!schema.options.toObject) {

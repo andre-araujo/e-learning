@@ -15,6 +15,7 @@ import EditActivity from './EditActivity';
 import CourseModules from './CourseModules';
 import CourseFiles from '../CourseFiles';
 import Certificate from '../Certificate';
+import Rating from '../Rating';
 
 import { deepSelect } from '../../../lib/utils';
 
@@ -66,6 +67,12 @@ class CourseDetails extends Component {
                 {'Última atualização: '}
                 {moment(data.updated_at).format('DD/MM/YYYY')}
               </Text.Paragraph>
+              <div>
+                <Rating
+                  isAdmin={isAdmin}
+                  courseId={data.id}
+                />
+              </div>
             </Fragment>
           )}
         >

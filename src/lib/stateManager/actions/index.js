@@ -11,6 +11,7 @@ import {
   fileUploadService,
   getUsersReportService,
   getCertificationService,
+  submitRatingService,
 } from '../../services/eLearningAPI';
 
 export const getUsersReport = getUsersReportService.action;
@@ -27,5 +28,6 @@ export const joinCourse = joinCourseService.action;
 
 export const fileUpload = fileUploadService.action;
 export const getCertification = getCertificationService.action;
+export const submitRating = submitRatingService.action;
 
 export * from './authentication'; // TODO: use redux-create-request API

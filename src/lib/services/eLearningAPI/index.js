@@ -229,6 +229,20 @@ export const fileUploadService = createRequestService({
   },
 });
 
+export const submitRatingService = createRequestService({
+  type: 'USER_SUBSCRIPTION',
+  request: ({
+    courseId,
+    rating,
+  }) => fetchHandler(
+    `/account/me/courses/${courseId}/rating`, {
+      method: 'POST',
+      body: {
+        rating,
+      },
+    },
+  ),
+});
 
 export const getCertificationService = createRequestService({
   type: 'GET_CERTIFICATION',
