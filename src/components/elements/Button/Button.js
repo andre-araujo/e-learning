@@ -1,5 +1,7 @@
 import React from 'react';
-import { node, number, bool } from 'prop-types';
+import {
+  node, number, bool, string,
+} from 'prop-types';
 
 import {
   StyledButton,
@@ -10,10 +12,11 @@ function Button({
   children,
   secondary,
   disabled,
+  minWidth,
   ...props
 }) {
   return (
-    <StyledButton disabled={disabled} secondary={secondary} {...props}>
+    <StyledButton disabled={disabled} secondary={secondary} minWidth={minWidth} {...props}>
       <Text>
         {children}
       </Text>
@@ -26,6 +29,7 @@ Button.defaultProps = {
   secondary: false,
   disabled: false,
   full: false,
+  minWidth: null,
   gap: 0,
 };
 
@@ -34,6 +38,7 @@ Button.propTypes = {
   secondary: bool,
   disabled: bool,
   full: bool,
+  minWidth: string,
   gap: number,
 };
 

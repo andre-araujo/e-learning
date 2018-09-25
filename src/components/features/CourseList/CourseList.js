@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { shape, array, func } from 'prop-types';
-import { DefaultContent, CourseResumeCard } from '../../modules';
+import { CourseResumeCard } from '../../modules';
 import { Wrapper } from '../../elements';
 import { deepSelect, getCourseRating } from '../../../lib/utils';
 
@@ -46,15 +46,6 @@ class CourseList extends Component {
               </li>
             );
           })}
-
-          {(!Array.isArray(courseData) || !userCourses.length) && (
-            <DefaultContent
-              title="Você ainda não se inscreveu em nenhum curso."
-              description="Se inscreva em cursos para ampliar seus conhecimentos."
-              linkText="Ir para lista de cursos"
-              href="/courses"
-            />
-          )}
         </ul>
       </Wrapper>
     );

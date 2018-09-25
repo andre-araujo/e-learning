@@ -15,14 +15,11 @@ import {
 function Authentication({
   requestGetToken,
   requestSingUp,
-  authentication,
 }) {
-  if (authentication.token) return null;
-
   const goToDashboard = (resp) => {
     if (resp.payload.status === 200 && resp.payload.token) {
       const isAdmin = JSON.parse(window.atob(resp.payload.token.split('.')[1])).admin;
-      Router.push(isAdmin ? '/instructor-panel' : '/my-courses');
+      Router.push(isAdmin ? '/instructor-panel' : '/courses');
     }
     return resp;
   };
@@ -38,7 +35,7 @@ function Authentication({
           />
         )}
       >
-        <Button secondary gap={15}>
+        <Button gap={15} minWidth="100px">
           Entrar
         </Button>
       </ModalProvider.Toggle>
@@ -49,7 +46,7 @@ function Authentication({
             onSubmit={data => requestSingUp(data).then(goToDashboard)}
           />)}
       >
-        <Button>
+        <Button minWidth="100px">
           cadastrar
         </Button>
       </ModalProvider.Toggle>

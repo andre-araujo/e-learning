@@ -2,22 +2,29 @@ import styled, { css } from 'styled-components';
 
 export const StyledText = tag => styled[tag]`
   font-family: Roboto;
-  word-break: break-all;
 
   ${({ type }) => {
     if (type === 'title') {
       return css`
-        font-size: 30px;
+        font-size: 1.5rem;
         font-weight: bolder;
         color: #333;
+
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
       `;
     }
 
     if (type === 'subtitle') {
       return css`
         font-weight: bold;
-        font-size: 20px;
+        font-size: 1rem;
         color: #555;
+
+        @media (min-width: 768px) {
+          font-size: 1.2rem;
+        }
       `;
     }
 
@@ -34,6 +41,18 @@ export const StyledText = tag => styled[tag]`
         font-size: 0.75rem;
         font-weight: 200;
         color: #888;
+    `;
+    }
+
+    if (type === 'big') {
+      return css`
+        font-size: 2.5rem;
+        font-weight: bolder;
+        color: #888;
+
+        @media (min-width: 768px) {
+          font-size: 4rem;
+        }
     `;
     }
 

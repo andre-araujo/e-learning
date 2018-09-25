@@ -24,8 +24,9 @@ export const Title = styled.div`
   color: white;
   font-weight: 500;
   font-size: 50px;
+  flex: 1;
 `;
 
 export const Content = styled.div`
-  font-size: 1rem;
+  flex: 1;
 `;

@@ -36,9 +36,6 @@ function UserMenu({
             <InternalLink gap={30} href="/courses">
               Cursos
             </InternalLink>
-            <InternalLink gap={30} href="/my-courses">
-              Meus Cursos
-            </InternalLink>
           </Fragment>
         )
       }

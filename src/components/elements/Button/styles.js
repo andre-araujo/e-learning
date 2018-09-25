@@ -55,6 +55,12 @@ export const StyledButton = styled.button`
   ${({ margin }) => margin && css`
     margin: ${margin};
   `};
+
+  ${({ minWidth }) => minWidth && css`
+    min-width: ${minWidth};
+    width: 100%;
+    margin: 0 auto;
+  `};
 `;
 
 export const Text = styled.span`

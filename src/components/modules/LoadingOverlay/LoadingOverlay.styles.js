@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   align-items: center;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 1);
   bottom: 0;
   display: flex;
   left: 0;

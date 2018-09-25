@@ -7,7 +7,6 @@ import {
   LoadingOverlay,
   ModalProvider,
   Header,
-  Authentication,
   UserMenu,
 } from '../components';
 
@@ -24,7 +23,8 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
+
     return (
       <Container>
         <Provider store={store}>
@@ -33,13 +33,16 @@ class MyApp extends App {
               <Header addOn={(
                 <Fragment>
                   <UserMenu />
-                  <Authentication />
                 </Fragment>
               )}
               />
+              {
+                router.pathname !== '/' && (
+                  <LoadingOverlay />
+                )
+              }
               <Component {...pageProps} />
             </ModalProvider>
-            <LoadingOverlay />
           </Fragment>
         </Provider>
       </Container>

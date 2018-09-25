@@ -21,6 +21,7 @@ function Text({
   );
 }
 
+Text.Big = props => <Text type="big" tag="h1" {...props} />;
 Text.Title = props => <Text type="title" tag="h1" {...props} />;
 Text.Subtitle = props => <Text type="subtitle" tag="h2" {...props} />;
 Text.Paragraph = props => <Text type="paragraph" tag="p" {...props} />;

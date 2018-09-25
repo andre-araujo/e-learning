@@ -18,19 +18,27 @@ function Hero({
   return (
     <CoverImage imageUrl={imageUrl}>
       <Container minHeight={minHeight}>
-        <Title>
-          {title}
-        </Title>
-        <Content>
-          {children}
-        </Content>
+        {
+          title && (
+            <Title>
+              {title}
+            </Title>
+          )
+        }
+        {
+          children && (
+            <Content>
+              {children}
+            </Content>
+          )
+        }
       </Container>
     </CoverImage>
   );
 }
 
 Hero.defaultProps = {
-  title: '',
+  title: null,
   children: null,
   imageUrl: null,
   minHeight: null,
