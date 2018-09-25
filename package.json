@@ -21,7 +21,7 @@
     "lint": "eslint ./",
     "api": "node ./api/index.js",
     "api:watch": "nodemon ./api/index.js",
-    "start": "npm run export && yarn api",
+    "start": "npm run api",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
