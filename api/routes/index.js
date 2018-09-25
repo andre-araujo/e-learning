@@ -47,7 +47,7 @@ app.post('/api/courses/:courseId/activities/:activityId', authentication, requir
 
 app.post('/api/courses/:courseId/files', authentication, require('../controllers/courses/courseFiles.controller').uploadFileController);
 
-app.all('*', (req, res) => {
+app.all('/api/*', (req, res) => {
   res.status(404).send({
     message: NOT_FOUND,
   });

@@ -19,7 +19,7 @@ const fetchHandler = (url, options = {}) => {
   }
 
   return unfetch(
-    `http://localhost:3001/api${url}`,
+    `/api${url}`,
     {
       ...otherOptions,
       headers: {
