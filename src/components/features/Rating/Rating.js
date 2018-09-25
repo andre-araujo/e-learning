@@ -14,6 +14,26 @@ import {
 } from './Rating.styles';
 
 class Rating extends Component {
+  static Stars = ({
+    rating,
+    onSubmit,
+    editable,
+  }) => (
+    <StarContainer
+      editable={editable}
+    >
+      {
+        [...Array(5).keys()].map(key => (
+          <Star
+            key={key}
+            active={rating >= key + 1}
+            onClick={onSubmit ? (() => onSubmit(key + 1)) : null}
+          />
+        ))
+      }
+    </StarContainer>
+  )
+
   onSubmit = (rating) => {
     const {
       courseId,
@@ -35,17 +55,7 @@ class Rating extends Component {
       <Container>
         <hr />
         <Flex alignItems="center">
-          <StarContainer>
-            {
-              [...Array(5).keys()].map(key => (
-                <Star
-                  key={key}
-                  active={rating >= key + 1}
-                  onClick={() => this.onSubmit(key + 1)}
-                />
-              ))
-            }
-          </StarContainer>
+          <Rating.Stars editable rating={rating} onSubmit={this.onSubmit} />
           {
             !rating && (
               <Text.Small color="white" margin="0 10px 0">

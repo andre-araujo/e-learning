@@ -3,6 +3,9 @@ import { FaStar } from 'react-icons/fa';
 
 export const Star = styled(FaStar)`
   font-size: 1rem;
+  color: #fafafa;
+  stroke-width: 10px;
+  stroke: rgba(0,0,0,.3);
 
   ${({ active }) => active && css`
     color: gold;
@@ -11,10 +14,12 @@ export const Star = styled(FaStar)`
 
 export const StarContainer = styled.div`
   display: inline-flex;
-  :hover ${Star} {
-    color: gold;
 
-    :hover,
+  ${({ editable }) => editable && css`
+    :hover ${Star} {
+      color: gold;
+
+      :hover,
       :active {
         cursor: pointer;
         color: gold;
@@ -22,9 +27,9 @@ export const StarContainer = styled.div`
           color: #fafafa;
         }
       }
-  }
+    }
+  `}
 `;
-
 
 export const Container = styled.div`
   user-select: none;

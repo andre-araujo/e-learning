@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import Rating from './Rating';
 import { actions } from '../../../lib';
 
-const mapStateToProps = ({ courseDetail, userSubscription }) => ({
-  courseDetail,
+const mapStateToProps = ({ userSubscription }) => ({
   userSubscription,
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, bool } from 'prop-types';
+import { string, bool, number } from 'prop-types';
 import Link from 'next/link';
 import moment from 'moment';
 
@@ -11,6 +11,7 @@ import {
   Joined,
 } from './CourseResumeCard.styles';
 import Text from '../../elements/Text';
+import Rating from '../../features/Rating/Rating';
 
 function CourseResumeCard({
   id,
@@ -22,9 +23,11 @@ function CourseResumeCard({
   updated_at,
   created_at,
   thumbnail,
+  rating,
 }) {
   const formatedCreatedAt = moment(created_at).format('DD/MM/YYYY');
   const formatedUpdatedAt = moment(updated_at).format('DD/MM/YYYY');
+
   return (
     <Link href={{
       pathname: '/courses',
@@ -56,7 +59,7 @@ function CourseResumeCard({
             </Text.Small>
           </p>
 
-          <Text.Small>
+          <Text.Small margin="0 0 10px">
           Instrutor:
             {' '}
             {instructorName}
@@ -69,6 +72,7 @@ function CourseResumeCard({
             && ` - última atualização: ${formatedUpdatedAt}`
             }
           </Text.Small>
+          <Rating.Stars rate={3} rating={rating} />
         </Content>
         {
           joined && (
@@ -94,6 +98,7 @@ CourseResumeCard.defaultProps = {
   created_at: null,
   thumbnail: null,
   joined: null,
+  rating: null,
 };
 
 CourseResumeCard.propTypes = {
@@ -106,6 +111,7 @@ CourseResumeCard.propTypes = {
   created_at: string,
   thumbnail: string,
   joined: bool,
+  rating: number,
 };
 
 export default CourseResumeCard;

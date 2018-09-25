@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { shape, array, func } from 'prop-types';
 import { DefaultContent, CourseResumeCard } from '../../modules';
 import { Wrapper } from '../../elements';
-import { deepSelect } from '../../../lib/utils';
+import { deepSelect, getCourseRating } from '../../../lib/utils';
 
 class CourseList extends Component {
   componentDidMount() {
@@ -41,6 +41,7 @@ class CourseList extends Component {
                   keyWords={course.keyWords}
                   updated_at={course.updated_at}
                   created_at={course.created_at}
+                  rating={getCourseRating(course.subscriptions)}
                 />
               </li>
             );

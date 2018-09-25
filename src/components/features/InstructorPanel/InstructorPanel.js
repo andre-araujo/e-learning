@@ -3,6 +3,7 @@ import { shape, array, func } from 'prop-types';
 
 import { DefaultContent, CourseResumeCard } from '../../modules';
 import { Wrapper, Text, InternalLink } from '../../elements';
+import { getCourseRating } from '../../../lib/utils';
 
 class InstructorPanel extends Component {
   componentDidMount() {
@@ -50,6 +51,7 @@ class InstructorPanel extends Component {
                     keyWords={course.keyWords}
                     updated_at={course.updated_at}
                     created_at={course.created_at}
+                    rating={getCourseRating(course.subscriptions)}
                   />
                 </li>
               ))}

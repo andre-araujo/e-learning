@@ -15,6 +15,7 @@ function getCoursesController(req, res) {
 
   return Course.find()
     .sort({ updated_at: 'desc' })
+    .populate('subscriptions', 'rating')
     .then((data) => {
       res.send(data);
     })
