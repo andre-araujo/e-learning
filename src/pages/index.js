@@ -27,7 +27,7 @@ function Home({
         <Text.Title tag="h2" color="white" margin="0 0 10px">
           A plataforma de ensino
         </Text.Title>
-        <Text.Subtitle tag="p" color="white" margin="0 0 10px">
+        <Text.Subtitle tag="p" color="white" margin="0 0 30px">
           Crie ou entre uma conta para começar a aprender!
         </Text.Subtitle>
         <Authentication />

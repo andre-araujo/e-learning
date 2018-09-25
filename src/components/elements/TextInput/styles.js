@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   position: relative;
-  border-bottom: 2px solid #333;
+  border-bottom: 1px solid #aaa;
 `;
 
 export const Label = styled.label`

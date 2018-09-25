@@ -52,10 +52,9 @@ function CourseResumeCard({
               Categoria:
               {' '}
               {category}
-              {' | '}
-              Palavras-chave:
-              {' '}
-              {keyWords}
+              {
+                keyWords && ` | Palavras-chave: ${keyWords}`
+              }
             </Text.Small>
           </p>
 
