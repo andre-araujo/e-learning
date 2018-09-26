@@ -18,7 +18,7 @@ A web application to share knowledge using an e-learning system.
 It will run at [http://localhost:3000](http://localhost:3000)
 
 ### Run in production mode
-`npm start` : Runs in *production mode* with a production-ready optimized build
+`npm run export && npm start` : Build and run in *production mode* with a production-ready optimized build
 
 ### Build
 `npm run build:prod` : Builds the project in *production mode* as an static app a `./dist` folder
@@ -30,6 +30,10 @@ It will run at [http://localhost:3000](http://localhost:3000)
 
 - [*Express*](http://expressjs.com/)
   - Node server framework
-- [*ReactJs*](https://reactjs.org/)
+- [*MongoDB*](https://www.mongodb.com/)
+  - NoSQL database
+- [*ReactJS*](https://reactjs.org/)
   - A JavaScript library for building user interfaces
   - Fast and well accepted
+- [*ReduxJS*](https://redux.js.org/)
+  - State manager
