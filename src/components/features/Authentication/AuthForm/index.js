@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { AlertBar, Button, TextInput } from '../../..';
+import { AlertBar, Button, TextInput } from '../../../elements';
 
 class AuthForm extends Component {
   state = {

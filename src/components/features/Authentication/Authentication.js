@@ -1,12 +1,9 @@
-import { connect } from 'react-redux';
 import Router from 'next/router';
 
-import AuthForm from './components/AuthForm';
+import AuthForm from './AuthForm';
 
-import {
-  Button,
-  ModalProvider,
-} from '../..';
+import { Button } from '../../elements';
+import { ModalProvider } from '../../modules';
 
 import {
   AuthButtons,
@@ -54,6 +51,4 @@ function Authentication({
   );
 }
 
-const mapStateToProps = ({ authentication }) => ({ authentication });
-
-export default connect(mapStateToProps)(Authentication);
+export default Authentication;

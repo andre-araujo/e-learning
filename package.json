@@ -89,6 +89,7 @@
     "collectCoverageFrom": [
       "src/components/elements/**/*.js",
       "src/components/modules/**/*.js",
+      "src/components/features/**/*.js",
       "!src/components/**/*styles.js"
     ],
     "setupFiles": [
