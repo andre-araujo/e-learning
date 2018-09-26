@@ -1,10 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Loading from './Loading';
 
 describe('Loading component', () => {
   it('should match snapshot', () => {
-    expect(mount(<Loading />)).toMatchSnapshot();
+    expect(shallow(<Loading />)).toMatchSnapshot();
   });
 });

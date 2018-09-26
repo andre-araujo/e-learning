@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseFiles component should match snapshot 1`] = `
+<div>
+  <Component
+    margin="0 0 10px"
+    tag="h1"
+  >
+    Arquivos:
+  </Component>
+  <hr />
+  <ol>
+    <li>
+      <Component
+        margin="20px 0"
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        Ainda não existem arquivos para este curso
+      </Component>
+    </li>
+  </ol>
+</div>
+`;

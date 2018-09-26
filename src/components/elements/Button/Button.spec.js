@@ -1,10 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Button from './Button';
 
 describe('Button component', () => {
   it('should match snapshot', () => {
-    expect(mount(<Button />)).toMatchSnapshot();
+    expect(shallow(<Button />)).toMatchSnapshot();
   });
 });

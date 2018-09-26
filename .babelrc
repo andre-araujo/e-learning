@@ -33,12 +33,13 @@
     "test": {
       "presets": [
         [
-          "env",
+          "next/babel",
           {
-            "modules": "commonjs"
+            "preset-env": {
+              "modules": "commonjs"
+            }
           }
-        ],
-        "next/babel"
+        ]
       ]
     }
   }

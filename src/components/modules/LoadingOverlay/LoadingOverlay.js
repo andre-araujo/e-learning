@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { bool } from 'prop-types';
 
-import { Loading } from '../..';
+import Loading from '../../elements/Loading';
 
 import {
   Container,
@@ -26,6 +25,4 @@ LoadingOverlay.propTypes = {
   loading: bool,
 };
 
-const mapStateToProps = ({ globalLoading }) => ({ loading: globalLoading.loading });
-
-export default connect(mapStateToProps)(LoadingOverlay);
+export default LoadingOverlay;

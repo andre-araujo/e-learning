@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should match snapshot 1`] = `
+<styled.nav>
+  <Styled(Wrapper)>
+    <Link
+      href="/"
+    >
+      <a
+        href="/"
+      >
+        <styled.h1>
+          LearningShelf
+        </styled.h1>
+      </a>
+    </Link>
+  </Styled(Wrapper)>
+</styled.nav>
+`;

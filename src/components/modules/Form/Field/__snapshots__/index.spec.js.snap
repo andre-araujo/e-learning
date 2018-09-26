@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field component should match snapshot 1`] = `
+<input
+  0={
+    Object {
+      "name": "field",
+      "onChange": [Function],
+      "value": "",
+    }
+  }
+/>
+`;

@@ -42,7 +42,7 @@ class FileInput extends Component {
         <input {...inputProps} name={name} type="file" onChange={this.onChange} />
         <FaFile />
         <Text.Small margin="10px">
-          { fileName }
+          {fileName}
         </Text.Small>
       </Label>
     );
@@ -51,12 +51,13 @@ class FileInput extends Component {
 
 FileInput.defaultProps = {
   label: null,
+  onChange: null,
 };
 
 FileInput.propTypes = {
   name: string.isRequired,
   label: string,
-  onChange: func.isRequired,
+  onChange: func,
 };
 
 export default FileInput;

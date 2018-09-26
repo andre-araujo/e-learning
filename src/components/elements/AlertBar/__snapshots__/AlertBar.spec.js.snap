@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlertBar component should match snapshot 1`] = `""`;
+
+exports[`AlertBar component should render it's children 1`] = `
+<styled.div>
+  <p>
+    children
+  </p>
+</styled.div>
+`;

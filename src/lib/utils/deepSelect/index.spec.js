@@ -8,10 +8,10 @@ const obj = {
 
 describe('deepSelect', () => {
   it('should return "another" value', () => {
-    expect(deepSelect(obj, 'something.another')).toEquals('1234');
+    expect(deepSelect(obj, 'something.another')).toEqual('1234');
   });
 
   it('should return undefined', () => {
-    expect(deepSelect(obj, 'something.anothers')).toEquals(undefined);
+    expect(deepSelect(obj, 'something.anothers')).toEqual(undefined);
   });
 });

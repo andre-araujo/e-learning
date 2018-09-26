@@ -1,6 +1,6 @@
 import React, { createContext, Component } from 'react';
 import { node, func, string } from 'prop-types';
-import Field from './components/Field';
+import Field from './Field';
 
 export const FormContext = createContext();
 
@@ -60,12 +60,11 @@ class Form extends Component {
 
 Form.defaultProps = {
   children: null,
-  onSubmit: null,
 };
 
 Form.propTypes = {
   children: node,
-  onSubmit: func,
+  onSubmit: func.isRequired,
   name: string.isRequired,
 };
 

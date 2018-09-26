@@ -1,10 +1,24 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import AlertBar from './AlertBar';
 
 describe('AlertBar component', () => {
   it('should match snapshot', () => {
-    expect(mount(<AlertBar />)).toMatchSnapshot();
+    expect(shallow(<AlertBar />)).toMatchSnapshot();
+  });
+
+  it('should render it\'s children', () => {
+    const rendered = shallow(
+      <AlertBar>
+        <p>
+          children
+        </p>
+      </AlertBar>,
+    );
+
+    expect(rendered.find('p').text()).toEqual('children');
+
+    expect(rendered).toMatchSnapshot();
   });
 });

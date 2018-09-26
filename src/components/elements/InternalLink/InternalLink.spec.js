@@ -1,10 +1,26 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import InternalLink from './InternalLink';
 
 describe('InternalLink component', () => {
   it('should match snapshot', () => {
-    expect(mount(<InternalLink />)).toMatchSnapshot();
+    expect(shallow(<InternalLink />)).toMatchSnapshot();
+  });
+
+  it('should match snapshot with anchor', () => {
+    expect(shallow(
+      <InternalLink>
+        content
+      </InternalLink>,
+    )).toMatchSnapshot();
+  });
+
+  it('should match snapshot with nect link', () => {
+    expect(shallow(
+      <InternalLink href="/test">
+        content
+      </InternalLink>,
+    )).toMatchSnapshot();
   });
 });
