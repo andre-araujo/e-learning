@@ -147,7 +147,7 @@ const CourseModulesList = ({
                                   webkitallowfullscreen
                                   mozallowfullscreen
                                   allowFullScreen
-                                  src={`http://www.youtube.com/embed/${lesson.youtubeVideoId}?autoplay=1`}
+                                  src={`//www.youtube.com/embed/${lesson.youtubeVideoId}?autoplay=1`}
                                 />
                               </div>
                             )}

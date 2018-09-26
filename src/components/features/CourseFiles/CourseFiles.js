@@ -16,13 +16,6 @@ class CourseFiles extends Component {
     file: null,
   }
 
-  componentDidMount() {
-    // const { id, getCourseDetail, getUserSubscription } = this.props;
-
-    // getCourseDetail(id);
-    // getUserSubscription(id);
-  }
-
   onSubmit = (e) => {
     e.preventDefault();
     const {
@@ -73,7 +66,7 @@ class CourseFiles extends Component {
           {
             courseFiles.map((courseFile, index) => (
               <li key={courseFile._id}>
-                <a href={`http://localhost:3001${courseFile.url}`} target="_blank" rel="noopener noreferrer">
+                <a href={courseFile.url} target="_blank" rel="noopener noreferrer">
                   <Text.Small margin="20px 0" style={{ display: 'block' }}>
                     {`${`${index}`} - ${courseFile.name}`}
                   </Text.Small>
@@ -86,7 +79,7 @@ class CourseFiles extends Component {
             !courseFiles.length && (
               <li>
                 <Text.Small margin="20px 0" style={{ display: 'block' }}>
-                Ainda não existem arquivos para este curso
+                  Ainda não existem arquivos para este curso
                 </Text.Small>
               </li>
             )
