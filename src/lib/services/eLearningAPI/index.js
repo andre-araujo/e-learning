@@ -27,7 +27,6 @@ export function singUp({
   name,
   email,
   password,
-  phone,
 }) {
   return fetchHandler(
     '/account/singup',
@@ -37,7 +36,6 @@ export function singUp({
         name,
         email,
         password,
-        phone,
       },
     },
   )
@@ -270,7 +268,7 @@ export const getCertificationService = createRequestService({
       setTimeout(() => {
         window.URL.revokeObjectURL(data);
       },
-      100);
+        100);
     }
     fetchHandler(
       `/courses/${id}/certification`, {

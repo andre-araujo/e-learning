@@ -11,7 +11,6 @@ const Account = require('../models/Account');
 
 function singup(req, res) {
   const {
-    phone,
     password,
     ...accountData
   } = req.body;
@@ -21,10 +20,6 @@ function singup(req, res) {
   const account = {
     ...accountData,
     password: MD5(password).toString(),
-    phone: Array.isArray(phone) && phone.map(tel => ({
-      number: tel.number,
-      prefix: tel.prefix,
-    })),
     updated_at: new Date(),
     logged_at: new Date(),
     admin: false,

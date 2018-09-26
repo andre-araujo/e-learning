@@ -15,13 +15,6 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  phone: [
-    {
-      _id: false,
-      number: Number,
-      prefix: Number,
-    },
-  ],
   updated_at: {
     type: Date,
     default: Date.now,
