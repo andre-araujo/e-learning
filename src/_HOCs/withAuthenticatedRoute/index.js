@@ -1,20 +1,29 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import Router from 'next/router';
+
 import { actions } from '../../lib';
 
 const withAuthenticatedRoute = (InnerComponent) => {
   class WrappedComponent extends Component {
     async componentDidMount() {
-      const { requestGetUser, logout } = this.props;
+      const { requestGetUser } = this.props;
+
       try {
         const userResp = await requestGetUser();
 
         if (userResp.payload.status !== 200) {
-          logout();
+          this.logout();
         }
       } catch (e) {
-        logout();
+        this.logout();
       }
+    }
+
+    logout = () => {
+      const { logout } = this.props;
+
+      Router.push('/').then(logout);
     }
 
     render() {

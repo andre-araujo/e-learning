@@ -21,10 +21,10 @@ function UserMenu({
       {
         isAdmin && (
           <Fragment>
-            <InternalLink gap={30} href="/instructor-panel">
+            <InternalLink gap={30} href="/instructor-panel" prefetch>
               Painel do Instrutor
             </InternalLink>
-            <InternalLink gap={30} href="/instructor-panel/users-report">
+            <InternalLink gap={30} href="/instructor-panel/users-report" prefetch>
               Relatório de usuários
             </InternalLink>
           </Fragment>
@@ -33,13 +33,13 @@ function UserMenu({
       {
         !isAdmin && (
           <Fragment>
-            <InternalLink gap={30} href="/courses">
+            <InternalLink gap={30} href="/courses" prefetch>
               Cursos
             </InternalLink>
           </Fragment>
         )
       }
-      <InternalLink gap={30} href="/" onClick={logout}>
+      <InternalLink gap={30} href="/" onClick={logout} prefetch>
         <FaSignOutAlt />
       </InternalLink>
     </Container>

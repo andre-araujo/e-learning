@@ -16,13 +16,6 @@ async function responseParser(resp) {
   }
 }
 
-export const getOrigin = req => (req ? `${req.protocol}://${req.get('Host')}` : window.location.origin);
-
-const storeToken = (resp) => {
-  window.localStorage.setItem('token', resp.token);
-  return resp;
-};
-
 export function singUp({
   name,
   email,
@@ -39,8 +32,7 @@ export function singUp({
       },
     },
   )
-    .then(responseParser)
-    .then(storeToken);
+    .then(responseParser);
 }
 
 export function getToken({
@@ -57,8 +49,7 @@ export function getToken({
       },
     },
   )
-    .then(responseParser)
-    .then(storeToken);
+    .then(responseParser);
 }
 
 export function getUser() {
@@ -268,7 +259,7 @@ export const getCertificationService = createRequestService({
       setTimeout(() => {
         window.URL.revokeObjectURL(data);
       },
-        100);
+      100);
     }
     fetchHandler(
       `/courses/${id}/certification`, {

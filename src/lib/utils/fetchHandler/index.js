@@ -1,6 +1,11 @@
 import unfetch from 'isomorphic-unfetch';
 
-export const getOrigin = req => (req ? `${req.protocol}://${req.get('Host')}` : window.location.origin);
+const getToken = () => {
+  const { getState } = require('../../stateManager/store').store;
+  const { token } = getState().authentication;
+
+  return token ? `Bearer ${token}` : null;
+};
 
 /**
  * Custom fetch
@@ -23,7 +28,7 @@ const fetchHandler = (url, options = {}) => {
     {
       ...otherOptions,
       headers: {
-        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+        Authorization: getToken(),
         ...content,
         ...headers,
       },

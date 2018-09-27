@@ -30,7 +30,7 @@ export function requestGetUser() {
 }
 
 export function logout() {
-  return {
+  return ({
     type: LOGOUT,
-  };
+  });
 }

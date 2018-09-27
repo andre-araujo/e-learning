@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 import loadingReducer from 'redux-loading-middleware/loadingReducer';
+import storage from 'redux-persist/lib/storage';
+import { LOGOUT } from '../actions';
 
 import authentication from './authenticationReducer';
 import {
@@ -13,19 +15,12 @@ import {
   getUsersReportService,
 } from '../../services/eLearningAPI';
 
-import { LOGOUT } from '../actions';
-import { IS_CLIENT } from '../../constants';
-
 const rootReducer = (state, action) => {
   let nextState = state;
 
   if (action.type === LOGOUT) {
+    storage.removeItem('persist:root');
     nextState = undefined;
-
-    if (IS_CLIENT && window.localStorage.getItem('token')) {
-      window.location.href = '/';
-      window.localStorage.removeItem('token');
-    }
   }
 
   return combineReducers({

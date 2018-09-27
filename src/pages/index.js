@@ -6,12 +6,10 @@ import { deepSelect } from '../lib/utils';
 import { Hero, Text } from '../components';
 import Authentication from '../components/features/Authentication';
 
-import withAuthenticatedRoute from '../_HOCs/withAuthenticatedRoute';
-
 function Home({
   authentication,
 }) {
-  if (authentication.token) {
+  if (deepSelect(authentication, 'getUser.account.id')) {
     Router.push(deepSelect(authentication, 'getUser.account.admin') ? '/instructor-panel' : '/courses');
   }
 
@@ -38,4 +36,4 @@ function Home({
 
 const mapStateToProps = ({ authentication }) => ({ authentication });
 
-export default withAuthenticatedRoute(connect(mapStateToProps)(Home));
+export default connect(mapStateToProps)(Home);

@@ -1,8 +1,9 @@
 import App, { Container } from 'next/app';
 import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import store from '../lib/stateManager/store';
+import { store, persistor } from '../lib/stateManager/store';
 import {
   LoadingOverlay,
   ModalProvider,
@@ -23,27 +24,25 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, router } = this.props;
+    const { Component, pageProps } = this.props;
 
     return (
       <Container>
         <Provider store={store}>
-          <Fragment>
-            <ModalProvider>
-              <Header addOn={(
-                <Fragment>
-                  <UserMenu />
-                </Fragment>
-              )}
-              />
-              {
-                router.pathname !== '/' && (
-                  <LoadingOverlay />
-                )
-              }
-              <Component {...pageProps} />
-            </ModalProvider>
-          </Fragment>
+          <PersistGate loading={null} persistor={persistor}>
+            <Fragment>
+              <ModalProvider>
+                <Header addOn={(
+                  <Fragment>
+                    <UserMenu />
+                  </Fragment>
+                )}
+                />
+                <Component {...pageProps} />
+              </ModalProvider>
+              <LoadingOverlay />
+            </Fragment>
+          </PersistGate>
         </Provider>
       </Container>
     );

@@ -1,4 +1,3 @@
-import { IS_CLIENT } from '../../../constants';
 import {
   SINGUP,
   GET_TOKEN,
@@ -9,7 +8,7 @@ const initialState = {
   singUp: {},
   getToken: {},
   getUser: {},
-  token: IS_CLIENT && window.localStorage.getItem('token'),
+  token: null,
 };
 
 function authenticationReducer(state = initialState, action = {}) {
