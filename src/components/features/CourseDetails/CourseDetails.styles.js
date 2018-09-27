@@ -35,11 +35,26 @@ export const RightIcon = styled.i`
   outline: none;
   font-size: 18px;
 
-  /* :hover {
-    color: orange;
-  } */
-
   ${({ color }) => color && css`
     color: ${color};
   `}
+`;
+
+export const Actions = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  @media (max-width: 639px) {
+    button {
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;

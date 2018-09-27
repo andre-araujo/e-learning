@@ -9,6 +9,8 @@ import {
 } from '../../elements';
 import { ModalProvider } from '../../modules';
 
+import { Actions } from './CourseDetails.styles';
+
 import EditCourse from './EditCourse';
 import EditLesson from './EditLesson';
 import EditActivity from './EditActivity';
@@ -76,63 +78,65 @@ class CourseDetails extends Component {
             </Fragment>
           )}
         >
-          {
-            !isAdmin && !alreadyJoin && (
-              <Button secondary onClick={() => joinCourse(data.id)}>
+          <Actions>
+            {
+              !isAdmin && !alreadyJoin && (
+                <Button secondary onClick={() => joinCourse(data.id)}>
                 Inscrever
-              </Button>
-            )
-          }
-          {
-            isAdmin && (
-              <Fragment>
-                <ModalProvider.Toggle
-                  title="Editar curso"
-                  render={({ toggleModal }) => (
-                    <EditCourse
-                      courseId={data.id}
-                      name={data.name}
-                      instructorName={data.instructorName}
-                      category={data.category}
-                      keyWords={data.keyWords}
-                      onSubmit={toggleModal}
-                    />
-                  )}
-                >
-                  <Button secondary>
+                </Button>
+              )
+            }
+            {
+              isAdmin && (
+                <Fragment>
+                  <ModalProvider.Toggle
+                    title="Editar curso"
+                    render={({ toggleModal }) => (
+                      <EditCourse
+                        courseId={data.id}
+                        name={data.name}
+                        instructorName={data.instructorName}
+                        category={data.category}
+                        keyWords={data.keyWords}
+                        onSubmit={toggleModal}
+                      />
+                    )}
+                  >
+                    <Button secondary>
                     Editar curso
-                  </Button>
-                </ModalProvider.Toggle>
-                <ModalProvider.Toggle
-                  title="Informações da aula"
-                  render={({ toggleModal }) => (
-                    <EditLesson
-                      courseId={data.id}
-                      onSubmit={toggleModal}
-                    />
-                  )}
-                >
-                  <Button secondary margin="0 15px">
+                    </Button>
+                  </ModalProvider.Toggle>
+                  <ModalProvider.Toggle
+                    title="Informações da aula"
+                    render={({ toggleModal }) => (
+                      <EditLesson
+                        courseId={data.id}
+                        onSubmit={toggleModal}
+                      />
+                    )}
+                  >
+                    <Button secondary margin="0 15px">
                     Criar aula
-                  </Button>
-                </ModalProvider.Toggle>
-                <ModalProvider.Toggle
-                  title="Criar Atividade"
-                  fullScreen
-                  render={({ toggleModal }) => (
-                    <EditActivity
-                      courseId={data.id}
-                      onSubmit={toggleModal}
-                    />
-                  )}
-                >
-                  <Button secondary>
+                    </Button>
+                  </ModalProvider.Toggle>
+                  <ModalProvider.Toggle
+                    title="Criar Atividade"
+                    fullScreen
+                    render={({ toggleModal }) => (
+                      <EditActivity
+                        courseId={data.id}
+                        onSubmit={toggleModal}
+                      />
+                    )}
+                  >
+                    <Button secondary>
                     Criar Atividade
-                  </Button>
-                </ModalProvider.Toggle>
-              </Fragment>
-            )
-          }
+                    </Button>
+                  </ModalProvider.Toggle>
+                </Fragment>
+              )
+            }
+          </Actions>
         </Hero>
 
         <Wrapper margin="40px auto">

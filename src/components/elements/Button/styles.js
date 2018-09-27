@@ -53,7 +53,11 @@ export const StyledButton = styled.button`
   `};
 
   ${({ margin }) => margin && css`
-    margin: ${margin};
+    margin: 0;
+
+    @media (min-width: 640px) {
+      margin: ${margin};
+    }
   `};
 
   ${({ minWidth }) => minWidth && css`

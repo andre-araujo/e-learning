@@ -10,7 +10,7 @@ export const StyledText = tag => styled[tag]`
         font-weight: bolder;
         color: #333;
 
-        @media (min-width: 768px) {
+        @media (min-width: 640px) {
           font-size: 2rem;
         }
       `;
@@ -22,7 +22,7 @@ export const StyledText = tag => styled[tag]`
         font-size: 1rem;
         color: #555;
 
-        @media (min-width: 768px) {
+        @media (min-width: 640px) {
           font-size: 1.2rem;
         }
       `;
@@ -50,7 +50,7 @@ export const StyledText = tag => styled[tag]`
         font-weight: bolder;
         color: #888;
 
-        @media (min-width: 768px) {
+        @media (min-width: 640px) {
           font-size: 4rem;
         }
     `;

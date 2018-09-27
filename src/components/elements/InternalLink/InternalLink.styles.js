@@ -5,17 +5,25 @@ export const StyledAnchor = styled.a`
   text-decoration: underline;
   user-select: none;
   display: inline-block;
-  word-break: break-all;
+  font-size: 0.8em;
 
   :hover {
     color: orange;
   }
 
   ${({ gap }) => gap && css`
-    margin-right: ${gap}px;
+    margin-right: ${gap / 2}px;
+
+    @media (min-width: 640px) {
+      margin-right: ${gap}px;
+    }
   `};
 
   ${({ margin }) => margin && css`
     margin: ${margin};
   `};
+
+  @media (min-width: 640px) {
+    font-size: 1em;
+  }
 `;

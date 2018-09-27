@@ -10,7 +10,7 @@ export const Container = styled.nav`
 export const Content = styled(Wrapper)`
   display: flex;
   align-items: center;
-  height: 70px;
+  min-height: 70px;
   justify-content: space-between;
 `;
 

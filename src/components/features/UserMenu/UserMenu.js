@@ -39,7 +39,7 @@ function UserMenu({
           </Fragment>
         )
       }
-      <InternalLink gap={30} href="/" onClick={logout} prefetch>
+      <InternalLink href="/" onClick={logout} prefetch>
         <FaSignOutAlt />
       </InternalLink>
     </Container>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { string, node } from 'prop-types';
+import { Flex, Box } from 'grid-styled';
 
 import {
   Title,
@@ -15,14 +16,22 @@ function Header({
   return (
     <Container>
       <Content>
-        <Link href="/">
-          <a href="/">
-            <Title>
-              {title}
-            </Title>
-          </a>
-        </Link>
-        {addOn}
+        <Flex width="100%" flexDirection={['column', 'row']} pt={25} pb={25}>
+          <Box flex={1}>
+            <Link href="/">
+              <a href="/">
+                <Title>
+                  {title}
+                </Title>
+              </a>
+            </Link>
+          </Box>
+          {addOn && (
+            <Box width={['100%', 'auto']}>
+              {addOn}
+            </Box>
+          )}
+        </Flex>
       </Content>
     </Container>
   );
