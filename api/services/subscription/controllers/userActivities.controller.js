@@ -1,5 +1,5 @@
-const CourseSubscription = require('../../models/CourseSubscription');
-const Activity = require('../../models/Activity');
+const CourseSubscription = require('../../../models/CourseSubscription');
+const Activity = require('../../../models/Activity');
 
 async function userActivities(req, res) {
   const {

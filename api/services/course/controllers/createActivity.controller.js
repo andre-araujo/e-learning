@@ -1,34 +1,32 @@
 const mongoose = require('mongoose');
 
-const Course = require('../../models/Course');
-const Lesson = require('../../models/Lesson');
+const Course = require('../../../models/Course');
+const Activity = require('../../../models/Activity');
 
-function createLessonController(req, res) {
+function createActivityController(req, res) {
   const {
     name,
-    videoURL,
+    questions,
     moduleName,
-    youtubeVideoId,
   } = req.body;
 
   const {
     courseId,
-    lessonId,
+    activityId,
   } = req.params;
 
   if (!req.user.admin) return res.status(403).send({ message: 'Must be an admin' });
 
-  if (lessonId) {
-    return Lesson.findByIdAndUpdate(
-      lessonId,
+  if (activityId) {
+    return Activity.findByIdAndUpdate(
+      activityId,
       {
         name,
-        videoURL,
+        questions,
         moduleName,
-        youtubeVideoId,
       },
     )
-      .then(lesson => res.send(lesson))
+      .then(activity => res.send(activity))
       .catch(err => res.status(500).send({ message: err }));
   }
 
@@ -36,17 +34,16 @@ function createLessonController(req, res) {
     .findById(courseId)
     .then((course) => {
       if (course) {
-        const lesson = new Lesson({
-          _id: new mongoose.Types.ObjectId(),
+        const activity = new Activity({
+          id: new mongoose.Types.ObjectId(),
           name,
-          videoURL,
+          questions,
           moduleName,
-          youtubeVideoId,
         });
 
-        course.lessons.push(lesson);
+        course.activities.push(activity);
 
-        lesson.save();
+        activity.save();
         course.save();
       }
 
@@ -55,4 +52,4 @@ function createLessonController(req, res) {
     .catch(err => res.status(500).send({ message: err }));
 }
 
-module.exports = createLessonController;
+module.exports = createActivityController;

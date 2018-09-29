@@ -1,9 +1,9 @@
 const {
   SUCCESS,
   USER_NOT_FOUND,
-} = require('../../constants');
+} = require('../../../constants');
 
-const Account = require('../../models/Account');
+const Account = require('../../../models/Account');
 
 async function accountController(req, res) {
   try {

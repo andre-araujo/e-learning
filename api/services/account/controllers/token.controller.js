@@ -5,9 +5,9 @@ const {
   TOKEN_EXPIRATION_TIME,
   SUCCESS,
   INVALID_USER,
-} = require('../constants');
+} = require('../../../constants');
 
-const Account = require('../models/Account');
+const Account = require('../../../models/Account');
 
 function tokenController(req, res) {
   const {

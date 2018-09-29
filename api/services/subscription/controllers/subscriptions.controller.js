@@ -1,4 +1,4 @@
-const CourseSubscription = require('../../models/CourseSubscription');
+const CourseSubscription = require('../../../models/CourseSubscription');
 
 async function subscriptions(req, res) {
   if (!req.user.admin) return res.status(403).send({ message: 'Must be an admin' });

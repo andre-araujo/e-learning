@@ -1,4 +1,4 @@
-const CourseSubscription = require('../../models/CourseSubscription');
+const CourseSubscription = require('../../../models/CourseSubscription');
 
 async function getSubscriptions(req, res) {
   const {

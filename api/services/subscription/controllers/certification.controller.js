@@ -1,5 +1,5 @@
 const PDFDocument = require('pdfkit');
-const CourseSubscription = require('../../models/CourseSubscription');
+const CourseSubscription = require('../../../models/CourseSubscription');
 
 function parseCourseResults(subscription) {
   const completion = subscription.finishedLessons.length

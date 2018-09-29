@@ -1,4 +1,4 @@
-const Course = require('../../models/Course');
+const Course = require('../../../models/Course');
 
 async function uploadFileController(req, res) {
   const {
@@ -24,7 +24,7 @@ async function uploadFileController(req, res) {
   if (alreadyUploaded) return res.status(400);
 
 
-  return courseFile.mv(`${__dirname}/../../uploads/${courseFile.name}`, (err) => {
+  return courseFile.mv(`${__dirname}/../../../uploads/${courseFile.name}`, (err) => {
     if (err) { return res.status(500).send(err); }
 
     course.files.push({

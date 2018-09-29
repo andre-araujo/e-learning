@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const Account = require('../../models/Account');
-const Course = require('../../models/Course');
-const CourseSubscription = require('../../models/CourseSubscription');
+const Account = require('../../../models/Account');
+const Course = require('../../../models/Course');
+const CourseSubscription = require('../../../models/CourseSubscription');
 
 async function subscribeCourse(req, res) {
   const {
