@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingOverlay component should match snapshot 1`] = `
+<styled.div
+  active={false}
+>
+  <Loading />
+</styled.div>
+`;
+
+exports[`LoadingOverlay component should match snapshot with loading 1`] = `
+<styled.div
+  active={true}
+>
+  <Loading />
+</styled.div>
+`;

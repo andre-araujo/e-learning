@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should match snapshot 1`] = `
+<styled.nav>
+  <Styled(Wrapper)>
+    <ForwardRef
+      blacklist={
+        Array [
+          "css",
+          "flexWrap",
+          "flexDirection",
+          "alignItems",
+          "justifyContent",
+          "css",
+          "width",
+          "m",
+          "mt",
+          "mr",
+          "mb",
+          "ml",
+          "mx",
+          "my",
+          "p",
+          "pt",
+          "pr",
+          "pb",
+          "pl",
+          "px",
+          "py",
+          "fontSize",
+          "color",
+          "bg",
+          "flex",
+          "order",
+          "alignSelf",
+        ]
+      }
+      flexDirection={
+        Array [
+          "column",
+          "row",
+        ]
+      }
+      is={[Function]}
+      pb={25}
+      pt={25}
+      width="100%"
+    >
+      <ForwardRef
+        blacklist={
+          Array [
+            "css",
+            "width",
+            "m",
+            "mt",
+            "mr",
+            "mb",
+            "ml",
+            "mx",
+            "my",
+            "p",
+            "pt",
+            "pr",
+            "pb",
+            "pl",
+            "px",
+            "py",
+            "fontSize",
+            "color",
+            "bg",
+            "flex",
+            "order",
+            "alignSelf",
+          ]
+        }
+        flex={1}
+      >
+        <Link
+          href="/"
+        >
+          <a
+            href="/"
+          >
+            <styled.h1>
+              LearningShelf
+            </styled.h1>
+          </a>
+        </Link>
+      </ForwardRef>
+    </ForwardRef>
+  </Styled(Wrapper)>
+</styled.nav>
+`;

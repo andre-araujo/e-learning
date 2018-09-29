@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form component should match snapshot 1`] = `
+<form
+  name="form"
+  onSubmit={[Function]}
+>
+  <ContextProvider
+    value={
+      Object {
+        "fields": Object {},
+        "setFieldValue": [Function],
+      }
+    }
+  />
+</form>
+`;

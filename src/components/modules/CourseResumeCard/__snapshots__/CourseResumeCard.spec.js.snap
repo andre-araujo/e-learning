@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseResumeCard component should match snapshot 1`] = `
+<Link
+  href={
+    Object {
+      "pathname": "/courses",
+      "query": Object {
+        "id": null,
+      },
+    }
+  }
+>
+  <styled.section>
+    <styled.div
+      src={null}
+    />
+    <styled.div>
+      <Component
+        margin="0 0 0.5em 0"
+        tag="h1"
+      />
+      <styled.strong>
+        <Component
+          margin="0 0 0.5em 0"
+        />
+      </styled.strong>
+      <p>
+        <Component>
+          Categoria:
+           
+        </Component>
+      </p>
+      <Component
+        margin="0 0 10px"
+      >
+        Instrutor:
+         
+         
+        -
+         
+        Invalid date
+      </Component>
+      <value
+        rate={3}
+        rating={null}
+      />
+    </styled.div>
+  </styled.section>
+</Link>
+`;
+
+exports[`CourseResumeCard component should match snapshot with formatedUpdatedAt 1`] = `
+<Link
+  href={
+    Object {
+      "pathname": "/courses",
+      "query": Object {
+        "id": null,
+      },
+    }
+  }
+>
+  <styled.section>
+    <styled.div
+      src={null}
+    />
+    <styled.div>
+      <Component
+        margin="0 0 0.5em 0"
+        tag="h1"
+      />
+      <styled.strong>
+        <Component
+          margin="0 0 0.5em 0"
+        />
+      </styled.strong>
+      <p>
+        <Component>
+          Categoria:
+           
+        </Component>
+      </p>
+      <Component
+        margin="0 0 10px"
+      >
+        Instrutor:
+         
+         
+        -
+         
+        13/12/2017
+         - última atualização: 14/12/2017
+      </Component>
+      <value
+        rate={3}
+        rating={null}
+      />
+    </styled.div>
+  </styled.section>
+</Link>
+`;
+
+exports[`CourseResumeCard component should match snapshot with joined 1`] = `
+<Link
+  href={
+    Object {
+      "pathname": "/courses",
+      "query": Object {
+        "id": null,
+      },
+    }
+  }
+>
+  <styled.section>
+    <styled.div
+      src={null}
+    />
+    <styled.div>
+      <Component
+        margin="0 0 0.5em 0"
+        tag="h1"
+      />
+      <styled.strong>
+        <Component
+          margin="0 0 0.5em 0"
+        />
+      </styled.strong>
+      <p>
+        <Component>
+          Categoria:
+           
+        </Component>
+      </p>
+      <Component
+        margin="0 0 10px"
+      >
+        Instrutor:
+         
+         
+        -
+         
+        Invalid date
+      </Component>
+      <value
+        rate={3}
+        rating={null}
+      />
+    </styled.div>
+    <styled.div>
+      <Component>
+        Inscrito
+      </Component>
+    </styled.div>
+  </styled.section>
+</Link>
+`;
+
+exports[`CourseResumeCard component should match snapshot with keywords 1`] = `
+<Link
+  href={
+    Object {
+      "pathname": "/courses",
+      "query": Object {
+        "id": null,
+      },
+    }
+  }
+>
+  <styled.section>
+    <styled.div
+      src={null}
+    />
+    <styled.div>
+      <Component
+        margin="0 0 0.5em 0"
+        tag="h1"
+      />
+      <styled.strong>
+        <Component
+          margin="0 0 0.5em 0"
+        />
+      </styled.strong>
+      <p>
+        <Component>
+          Categoria:
+           
+           | Palavras-chave: keyword
+        </Component>
+      </p>
+      <Component
+        margin="0 0 10px"
+      >
+        Instrutor:
+         
+         
+        -
+         
+        Invalid date
+      </Component>
+      <value
+        rate={3}
+        rating={null}
+      />
+    </styled.div>
+  </styled.section>
+</Link>
+`;

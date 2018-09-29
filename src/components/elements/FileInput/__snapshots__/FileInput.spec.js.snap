@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileInput component should match snapshot 1`] = `
+<styled.label>
+  <input
+    name="file"
+    onChange={[Function]}
+    type="file"
+  />
+  <Component />
+  <Component
+    margin="10px"
+  >
+    Clique para adicionar uma mídia
+  </Component>
+</styled.label>
+`;

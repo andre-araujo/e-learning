@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text component should match snapshot 1`] = `
+<styled.span
+  color={null}
+  type="paragraph"
+/>
+`;
+
+exports[`Text component should match snapshot for Big 1`] = `
+<Text
+  color={null}
+  tag="h1"
+  type="big"
+/>
+`;
+
+exports[`Text component should match snapshot for Paragraph 1`] = `
+<Text
+  color={null}
+  tag="p"
+  type="paragraph"
+/>
+`;
+
+exports[`Text component should match snapshot for Small 1`] = `
+<Text
+  color={null}
+  tag="span"
+  type="small"
+/>
+`;
+
+exports[`Text component should match snapshot for Subtitle 1`] = `
+<Text
+  color={null}
+  tag="h2"
+  type="subtitle"
+/>
+`;
+
+exports[`Text component should match snapshot for Title 1`] = `
+<Text
+  color={null}
+  tag="h1"
+  type="title"
+/>
+`;

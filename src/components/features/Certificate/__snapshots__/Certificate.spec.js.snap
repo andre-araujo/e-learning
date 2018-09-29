@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Certificate component should match snapshot 1`] = `
+<div>
+  <Component
+    margin="0 0 10px"
+    tag="h1"
+  >
+    Certificado digital:
+  </Component>
+  <hr />
+  <form
+    onSubmit={[Function]}
+  >
+    <Button
+      disabled={false}
+      full={true}
+      gap={0}
+      minWidth={null}
+      secondary={false}
+    >
+      Requisitar certificado
+    </Button>
+  </form>
+</div>
+`;

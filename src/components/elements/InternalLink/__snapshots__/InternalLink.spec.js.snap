@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InternalLink component should match snapshot 1`] = `
+<styled.a
+  gap={0}
+  href="#"
+/>
+`;
+
+exports[`InternalLink component should match snapshot with anchor 1`] = `
+<styled.a
+  gap={0}
+  href="#"
+>
+  content
+</styled.a>
+`;
+
+exports[`InternalLink component should match snapshot with nect link 1`] = `
+<Link
+  href="/test"
+>
+  <styled.a
+    gap={0}
+  >
+    content
+  </styled.a>
+</Link>
+`;

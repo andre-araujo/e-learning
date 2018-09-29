@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authentication component should match snapshot 1`] = `
+<styled.div>
+  <value
+    render={
+      <AuthForm
+        login={true}
+        onSubmit={[Function]}
+      />
+    }
+    title="Login"
+  >
+    <Button
+      disabled={false}
+      full={false}
+      gap={15}
+      minWidth="100px"
+      secondary={false}
+    >
+      Entrar
+    </Button>
+  </value>
+  <value
+    render={
+      <AuthForm
+        onSubmit={[Function]}
+      />
+    }
+    title="Cadastrar"
+  >
+    <Button
+      disabled={false}
+      full={false}
+      gap={0}
+      minWidth="100px"
+      secondary={false}
+    >
+      cadastrar
+    </Button>
+  </value>
+</styled.div>
+`;

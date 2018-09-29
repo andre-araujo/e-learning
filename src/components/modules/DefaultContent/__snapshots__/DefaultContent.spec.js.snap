@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultContent component should match snapshot 1`] = `
+<Styled(Wrapper)>
+  <styled.h1 />
+  <styled.p />
+  <InternalLink
+    gap={0}
+    href={null}
+  />
+</Styled(Wrapper)>
+`;

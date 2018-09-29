@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hero component should match snapshot 1`] = `
+<CoverImage
+  imageUrl={null}
+>
+  <Styled(Wrapper)
+    minHeight={null}
+  />
+</CoverImage>
+`;
+
+exports[`Hero component should match snapshot with children 1`] = `
+<CoverImage
+  imageUrl={null}
+>
+  <Styled(Wrapper)
+    minHeight={null}
+  >
+    <styled.div>
+      children
+    </styled.div>
+  </Styled(Wrapper)>
+</CoverImage>
+`;
+
+exports[`Hero component should match snapshot with title 1`] = `
+<CoverImage
+  imageUrl={null}
+>
+  <Styled(Wrapper)
+    minHeight={null}
+  >
+    <styled.div>
+      Title
+    </styled.div>
+  </Styled(Wrapper)>
+</CoverImage>
+`;
