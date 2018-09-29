@@ -43,7 +43,7 @@ function CourseResumeCard({
 
           <Description>
             <Text.Paragraph margin="0 0 0.5em 0">
-              sdadsaads
+              {/* {name} */}
             </Text.Paragraph>
           </Description>
 

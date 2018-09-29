@@ -12,6 +12,14 @@ A web application to share knowledge using an e-learning system.
 ### Install
 `npm install` : Get project dependencies
 
+## Database
+
+This project uses [*MongoDB*](https://www.mongodb.com/) as database.
+
+Download and install MongoDB, or use any MongoDB server of your choice.
+
+`export MONGODB_URI=<MY_URI>` to set MongoDB URI enviroment variable. (defaults to //localhost:27017)
+
 ### Run in develop mode
 `npm run dev` : Runs in *develop mode* with hot reload
 
@@ -30,6 +38,8 @@ It will run at [http://localhost:3000](http://localhost:3000)
 
 - [*Express*](http://expressjs.com/)
   - Node server framework
+- [*NextJS*](https://nextjs.org)
+  - A lightweight framework for static and server‑rendered applications
 - [*MongoDB*](https://www.mongodb.com/)
   - NoSQL database
 - [*ReactJS*](https://reactjs.org/)

@@ -38,7 +38,7 @@ const ReportItem = ({
               </Text.Subtitle>
               <CardItem>
                 <Text.Small>
-                  {`Vídeos assistidos: ${course.completion}`}
+                  {`Vídeos assistidos: ${isNaN(course.completion) ? 0 : course.completion}`}
                 </Text.Small>
               </CardItem>
               {

@@ -113,7 +113,7 @@ class EditActivity extends Component {
           isAdmin && (
             <Fragment>
               <button type="button" onClick={this.addQuestion}>
-                <Text.Paragraph>
+                <Text.Paragraph margin="30px 0">
                   <FaPlus />
                   {' Adicionar pergunta'}
                 </Text.Paragraph>
@@ -143,8 +143,6 @@ class EditActivity extends Component {
         >
           {questions.map((question, index) => (
             <div key={question.id}>
-              <hr />
-
               <Text.Subtitle margin="15px 0">
                 {`Questão ${index + 1}: `}
               </Text.Subtitle>

@@ -24,7 +24,8 @@
     "window": true,
     "app": true,
     "FormData": true,
-    "Blob": true
+    "Blob": true,
+    "isNaN": true
   },
   "rules": {
     "import/prefer-default-export": 0,

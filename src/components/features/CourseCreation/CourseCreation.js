@@ -1,4 +1,6 @@
-import { TextInput, Wrapper, Button } from '../../elements';
+import {
+  TextInput, Wrapper, Button, Text,
+} from '../../elements';
 import { Form } from '../../modules';
 
 function CourseCreation({
@@ -9,6 +11,9 @@ function CourseCreation({
 
   return (
     <Wrapper>
+      <Text.Title margin="40px 0">
+        Criar curso
+      </Text.Title>
       <Form name="create-course" onSubmit={requestCreateCourse}>
         <Form.Field
           name="name"

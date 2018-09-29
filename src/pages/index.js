@@ -26,7 +26,7 @@ function Home({
           A plataforma de ensino
         </Text.Title>
         <Text.Subtitle tag="p" color="white" margin="0 0 30px">
-          Crie ou entre uma conta para começar a aprender!
+          Crie uma conta ou entre para começar a aprender!
         </Text.Subtitle>
         <Authentication />
       </div>

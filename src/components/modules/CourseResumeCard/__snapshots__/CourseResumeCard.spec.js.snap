@@ -23,9 +23,7 @@ exports[`CourseResumeCard component should match snapshot 1`] = `
       <styled.strong>
         <Component
           margin="0 0 0.5em 0"
-        >
-          sdadsaads
-        </Component>
+        />
       </styled.strong>
       <p>
         <Component>
@@ -75,9 +73,7 @@ exports[`CourseResumeCard component should match snapshot with formatedUpdatedAt
       <styled.strong>
         <Component
           margin="0 0 0.5em 0"
-        >
-          sdadsaads
-        </Component>
+        />
       </styled.strong>
       <p>
         <Component>
@@ -128,9 +124,7 @@ exports[`CourseResumeCard component should match snapshot with joined 1`] = `
       <styled.strong>
         <Component
           margin="0 0 0.5em 0"
-        >
-          sdadsaads
-        </Component>
+        />
       </styled.strong>
       <p>
         <Component>
@@ -185,9 +179,7 @@ exports[`CourseResumeCard component should match snapshot with keywords 1`] = `
       <styled.strong>
         <Component
           margin="0 0 0.5em 0"
-        >
-          sdadsaads
-        </Component>
+        />
       </styled.strong>
       <p>
         <Component>
