@@ -200,6 +200,21 @@ export const getCourseDetailService = createRequestService({
   ),
 });
 
+export const editCourseImageService = createRequestService({
+  type: 'GET_COURSE_DETAIL',
+  request: ({
+    courseId,
+    imageURL,
+  }) => fetchHandler(
+    `/courses/${courseId}/cover`, {
+      method: 'PATCH',
+      body: {
+        imageURL,
+      },
+    },
+  ),
+});
+
 export const fileUploadService = createRequestService({
   type: 'GET_COURSE_DETAIL',
   request: ({
@@ -216,6 +231,18 @@ export const fileUploadService = createRequestService({
       },
     );
   },
+});
+
+export const fileDeleteService = createRequestService({
+  type: 'GET_COURSE_DETAIL',
+  request: ({
+    courseId,
+    fileId,
+  }) => fetchHandler(
+    `/courses/${courseId}/files/${fileId}`, {
+      method: 'DELETE',
+    },
+  ),
 });
 
 export const submitRatingService = createRequestService({

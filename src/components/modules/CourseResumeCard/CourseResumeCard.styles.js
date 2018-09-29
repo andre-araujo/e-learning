@@ -5,8 +5,9 @@ export const Thumbnail = styled.div`
   width: 100%;
   background: #666;
 
-  ${({ src }) => css`
-    background: url(${src}) cover;
+  ${({ imageURL }) => css`
+    background-size:  cover;
+    background-image: url(${imageURL});
   `}
 
   @media (min-width: 640px) {

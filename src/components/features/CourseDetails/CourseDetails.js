@@ -15,6 +15,8 @@ import EditCourse from './EditCourse';
 import EditLesson from './EditLesson';
 import EditActivity from './EditActivity';
 import CourseModules from './CourseModules';
+import EditCourseImage from './EditCourseImage';
+
 import CourseFiles from '../CourseFiles';
 import Certificate from '../Certificate';
 import Rating from '../Rating';
@@ -55,9 +57,18 @@ class CourseDetails extends Component {
     return (
       <div>
         <Hero
+          imageUrl={data.imageURL}
           minHeight="100px"
           title={(
             <Fragment>
+              {
+                isAdmin && (
+                  <EditCourseImage
+                    courseId={data.id}
+                    initialValue={data.imageURL}
+                  />
+                )
+              }
               <Text.Title color="white" margin="0 0 30px">
                 {data.name}
               </Text.Title>

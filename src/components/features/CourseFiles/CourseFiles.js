@@ -1,15 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import { string } from 'prop-types';
-import moment from 'moment';
+import React, { Component } from 'react';
+import { FaTimes } from 'react-icons/fa';
 
-import Hero from '../../modules/Hero';
 import {
-  FileInput, Text, Button, Wrapper, InternalLink,
+  FileInput, Text, Button,
 } from '../../elements';
-import { ModalProvider } from '../../modules';
-
 
 import { deepSelect } from '../../../lib/utils';
+
+import { FileItem, Container } from './CourseFiles.styles';
 
 class CourseFiles extends Component {
   state = {
@@ -26,9 +24,27 @@ class CourseFiles extends Component {
       file,
     } = this.state;
 
+    this.setState({
+      file: null,
+    });
+
     fileUpload({
       courseId,
       file,
+    });
+  }
+
+  onDelete = ({
+    courseId,
+    fileId,
+  }) => {
+    const {
+      fileDelete,
+    } = this.props;
+
+    fileDelete({
+      courseId,
+      fileId,
     });
   }
 
@@ -42,9 +58,10 @@ class CourseFiles extends Component {
     } = this.state;
 
     const courseFiles = deepSelect(courseDetail, 'payload.files', []);
+    const courseId = deepSelect(courseDetail, 'payload.id');
 
     return (
-      <div>
+      <Container>
         <Text.Subtitle tag="h1" margin="0 0 10px">
           Arquivos:
         </Text.Subtitle>
@@ -65,14 +82,27 @@ class CourseFiles extends Component {
         <ol>
           {
             courseFiles.map((courseFile, index) => (
-              <li key={courseFile._id}>
+              <FileItem key={courseFile._id}>
+                {
+                  isAdmin && (
+                    <button
+                      type="button"
+                      onClick={() => this.onDelete({
+                        courseId,
+                        fileId: courseFile._id,
+                      })}
+                    >
+                      <FaTimes />
+                    </button>
+                  )
+                }
                 <a href={courseFile.url} target="_blank" rel="noopener noreferrer">
-                  <Text.Small margin="20px 0" style={{ display: 'block' }}>
+                  <Text.Small style={{ display: 'block' }}>
                     {`${`${index}`} - ${courseFile.name}`}
                   </Text.Small>
                 </a>
 
-              </li>
+              </FileItem>
             ))
           }
           {
@@ -85,7 +115,7 @@ class CourseFiles extends Component {
             )
           }
         </ol>
-      </div>
+      </Container>
     );
   }
 }

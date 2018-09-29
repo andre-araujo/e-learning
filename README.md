@@ -3,7 +3,7 @@
 
 A web application to share knowledge using an e-learning system.
 
-*This repo is meant to be a part of my activity to complete a postgraduate course in web applications of PUC Minas*
+*This repo is meant to be a part of my final exam to complete a postgraduate course in web applications at PUC Minas*
 
 ## Usage with node
 
@@ -28,8 +28,8 @@ It will run at [http://localhost:3000](http://localhost:3000)
 ### Run in production mode
 `npm run export && npm start` : Build and run in *production mode* with a production-ready optimized build
 
-### Build
-`npm run build:prod` : Builds the project in *production mode* as an static app a `./dist` folder
+### Build and export
+`npm run export` : Builds the project in *production mode* as a static app at `./dist` folder
 
 ## Testing
 `npm run test:coverage` : Runs test coverage using jest as a testing tool

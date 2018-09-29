@@ -9,13 +9,21 @@ const {
 
 const Account = require('../../../models/Account');
 
-function singup(req, res) {
+async function singup(req, res) {
   const {
     password,
     ...accountData
   } = req.body;
 
   if (!req.body.password || !req.body.email) return res.status(400).send({ message: INVALID_USER });
+
+  const existingAccount = await Account.findOne({
+    $or: [
+      { email: accountData.email }, { name: accountData.name },
+    ],
+  });
+
+  if (existingAccount) return res.status(400).send({ message: 'User already exists' });
 
   const account = {
     ...accountData,

@@ -22,7 +22,7 @@ function CourseResumeCard({
   keyWords,
   updated_at,
   created_at,
-  thumbnail,
+  imageURL,
   rating,
 }) {
   const formatedCreatedAt = moment(created_at).format('DD/MM/YYYY');
@@ -35,7 +35,7 @@ function CourseResumeCard({
     }}
     >
       <Container>
-        <Thumbnail src={thumbnail} />
+        <Thumbnail imageURL={imageURL} />
         <Content>
           <Text.Subtitle tag="h1" margin="0 0 0.5em 0">
             {name}

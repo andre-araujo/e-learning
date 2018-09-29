@@ -8,6 +8,7 @@ const mapStateToProps = ({ courseDetail }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  fileDelete: data => dispatch(actions.fileDelete(data)),
   fileUpload: data => dispatch(actions.fileUpload(data)),
 });
 

@@ -38,4 +38,30 @@ async function uploadFileController(req, res) {
   });
 }
 
+async function deleteFileController(req, res) {
+  const {
+    courseId,
+    fileId,
+  } = req.params;
+
+  if (!req.user.admin) return res.status(403).send({ message: 'Must be an admin' });
+
+  if (!courseId || !fileId) return res.status(400).send({ message: 'Missing courseId or fileId' });
+
+  try {
+    const course = await Course.findByIdAndUpdate(
+      courseId,
+      { $pull: { files: { _id: [fileId] } } },
+      { new: true },
+    )
+      .populate('lessons')
+      .populate('activities');
+
+    res.send(course);
+  } catch (e) {
+    res.status(500);
+  }
+}
+
 module.exports.uploadFileController = uploadFileController;
+module.exports.deleteFileController = deleteFileController;

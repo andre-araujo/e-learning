@@ -50,6 +50,7 @@ class InstructorPanel extends Component {
                     category={course.category}
                     keyWords={course.keyWords}
                     updated_at={course.updated_at}
+                    imageURL={course.imageURL}
                     created_at={course.created_at}
                     rating={getCourseRating(course.subscriptions)}
                   />

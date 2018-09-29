@@ -5,6 +5,11 @@ app.post(
   require('./controllers/createCourse.controller'),
 );
 
+app.patch(
+  '/api/courses/:courseId/cover', authentication,
+  require('./controllers/editCourseCover.controller'),
+);
+
 app.post(
   '/api/courses/:courseId', authentication,
   require('./controllers/createCourse.controller'),
@@ -43,4 +48,9 @@ app.post(
 app.post(
   '/api/courses/:courseId/files', authentication,
   require('./controllers/courseFiles.controller').uploadFileController,
+);
+
+app.delete(
+  '/api/courses/:courseId/files/:fileId', authentication,
+  require('./controllers/courseFiles.controller').deleteFileController,
 );

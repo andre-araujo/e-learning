@@ -7,6 +7,7 @@ const schema = new Schema({
     type: String,
     required: true,
   },
+  imageURL: String,
   instructorName: {
     type: String,
     required: true,

@@ -63,6 +63,7 @@ class CourseList extends Component {
                   category={course.category}
                   updated_at={course.updated_at}
                   created_at={course.created_at}
+                  imageURL={course.imageURL}
                   rating={getCourseRating(course.subscriptions)}
                 />
               </li>
